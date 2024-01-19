@@ -3,7 +3,6 @@
     width: 100%;
     position: fixed;
     background-color: var(--nav-bg-color);
-    box-shadow: 0 1px 10px rgba(46, 46, 46, 0.1);
     top: 0;
     left: 0;
 }
@@ -17,6 +16,12 @@
     align-items: center;
 }
 
+.onScroll{
+    box-shadow: -5px 5px 19px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: -5px 5px 19px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: -5px 5px 19px rgba(0, 0, 0, 0.1);
+}
+
 /* left */
 .left {
     flex: 1;
@@ -27,6 +32,9 @@
     color: var(--red-color);
     font-weight: bold;
     font-size: 1.75rem;
+}
+.title > span{
+    color: var(--yellow-color);
 }
 
 /* center */
