@@ -55,7 +55,7 @@
 }
 
 .listItem:hover{
-    color: var(--light-gray-color);
+    color: var(--yellow-color);
 }
 
 /* right */
@@ -94,14 +94,18 @@
 }
 
 .logout{
+    color: var(--medium-gray-color);
     font-size: 1rem;
     margin-left: 1rem;
     cursor: pointer;
 }
+.logout:hover{
+    color: var(--light-gray-color);
+}
 
 
 
-/*         ===Responcive CSS===          */
+/*         ===Responsiveness CSS===          */
 /* screen size tablet */
 @media all and (max-width: 769px) {
     /* left */
