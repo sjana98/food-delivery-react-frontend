@@ -1,0 +1,213 @@
+.container{
+    height: calc(100vh - 60px);
+    width: 100%;
+    margin-top: 5.5rem;
+    margin-bottom: -5.5rem;
+}
+
+.wrapper{
+    width: 85%;
+    height: 100%;
+    display: flex;
+    margin: 0 auto;
+    gap: 7rem;
+    justify-content: center;
+}
+
+/* reft */
+.left{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 2rem;
+}
+
+.title{
+    color: var( --light-red-color);
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin-bottom: 1.875rem;
+    white-space: nowrap;
+}
+
+.title > span{
+    color: var(--yellow-color);
+}
+
+.firstMsg{
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.firstMsg > span{
+    color: var(--light-red-color);
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.secondMsg{
+    font-size: 1.3rem;
+}
+
+.secondMsg > span{
+    color: var(--light-red-color);
+    font-weight: bold;
+}
+
+.decs{
+    color: var(--dark-gray-color);
+    font-size: .9rem;
+    margin-top: 1.25rem;
+    max-width: 20rem;
+    line-height: 1.500rem;
+}
+
+.buttons{
+    margin-top: 4rem;
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+}
+
+.buttons > button{
+    border: 1px solid transparent;
+    padding: 0.5rem 1.25rem;
+    background-color: var(--light-red-color);
+    color: var(--white-color);
+    border-radius: 8px;
+    font-size: 1.125rem;
+    transition: 150ms all;
+    cursor: pointer;
+}
+
+.buttons > button:hover{
+    border-color: var(--light-red-color);
+    background-color: var(--white-color);
+    color: var(--light-red-color);
+}
+
+.buttonSee > a{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* right */
+.right{
+    margin-top: 3rem;
+    flex: 1;
+}
+
+.manEatingImg{
+    height: 85%;
+    width: 100%;
+    object-fit: cover;
+}
+
+
+
+
+/*         ===Responsiveness CSS===          */
+/* screen size tablet */
+@media all and (max-width: 769px) {
+    .wrapper{
+        gap: .7rem;
+    }
+    /* left */
+    .title{
+        font-size: 1.7rem;
+        margin-bottom: .8rem;
+    }
+
+    .firstMsg{
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+    }
+    
+    .firstMsg > span{
+        font-size: 1.1rem;
+    }
+    
+    .secondMsg{
+        font-size: 1.1rem;
+    }
+    
+    .decs{
+        font-size: .8rem;
+        max-width: 17rem;
+        line-height: 1.300rem;
+    }
+    
+    .buttons{
+        margin-top: 3rem;
+        gap: .60rem;
+    }
+    
+    .buttons > button{
+        font-size: .8rem;
+    }
+    
+    .buttonSee > a{
+        gap: 5px;
+    }
+
+    /* right */
+    .right{
+        margin-top: 4rem;
+    }
+}
+
+/* screen size mobile */
+@media all and (max-width: 376px) {
+    .wrapper{
+        display: block;
+        position: relative;
+        margin: 0 auto;
+        justify-content: center;
+    }
+
+    /* right */
+    .right{
+        margin-top: 0rem;
+        position: absolute;
+        top: 5px;
+        height: 85%;
+        width: 100%;
+    }
+    
+    /* left */
+    .title{
+        margin-top: 16rem;
+        font-size: 1.3rem;
+        margin-bottom: .4rem;
+    }
+
+    .firstMsg{
+        margin-bottom: .8rem;
+        font-size: 1.1rem;
+    }
+    
+    .firstMsg > span{
+        font-size: .9rem;
+    }
+    
+    .secondMsg{
+        font-size: .9rem;
+    }
+    
+    .decs{
+        font-size: .7rem;
+        max-width: 15rem;
+        line-height: 1.1rem;
+    }
+    
+    .buttons{
+        margin-top: 2rem;
+        gap: .60rem;
+    }
+    
+    .buttons > button{
+        font-size: .6rem;
+    }
+}
