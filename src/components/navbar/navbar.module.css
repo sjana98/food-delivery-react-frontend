@@ -5,6 +5,7 @@
     background-color: var(--nav-bg-color);
     top: 0;
     left: 0;
+    z-index: 99999;
 }
 
 .wrapper{
