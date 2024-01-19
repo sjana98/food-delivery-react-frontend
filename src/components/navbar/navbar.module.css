@@ -94,8 +94,99 @@
 }
 
 .logout{
-    font-size: 1.0625rem;
+    font-size: 1rem;
     margin-left: 1rem;
     cursor: pointer;
 }
 
+
+
+/*         ===Responcive CSS===          */
+/* screen size tablet */
+@media all and (max-width: 769px) {
+    /* left */
+    .title{
+        font-size: 1.3rem;
+    }
+
+    /* center */
+    .list{
+        gap: 1.3rem;
+    }
+
+    .listItem{
+        font-size: .7rem;
+    }
+
+    /* right */
+    .right{
+        gap: .6rem;
+    }
+    
+    .userIcon, .cartIcon{
+        font-size: 1.3rem;
+    }
+
+    .cartQuantity{
+        height: 15px;
+        width: 15px;
+        font-size: .7rem;
+    }
+
+    .logout{
+        font-size: .8rem;
+        margin-left: .8rem;
+    }
+}
+
+/* screen size mobile */
+@media all and (max-width: 376px) {
+    .container{
+        height: 80px;
+        padding-top: 10px;
+    }
+
+    .wrapper{
+        width: 90%;
+        margin: 0 auto;
+        display: block;
+        justify-content: start;
+        align-items: center;
+    }
+
+    /* right */
+    .title{
+        padding: 8px;
+    }
+    
+    /* center */
+    .center {
+        padding: 10px 0;
+    }
+
+    .list{
+        gap: 1rem;
+        padding: 5px 0;
+    }
+
+    .listItem{
+        font-size: .6rem;
+    }
+
+    /* right */
+    .right{
+        position: absolute;
+        gap: .7rem;
+        top: 15px;
+        right: 25px;
+    }
+    
+    .userIcon, .cartIcon{
+        font-size: 1.1rem;
+    }
+
+    .logout{
+        margin-left: .7rem;
+    }
+
+}
