@@ -12,7 +12,7 @@ function Foods() {
           <h2 className={classes.title}>Home kitchen crafts perfect meals for you</h2>
           <div className={classes.foods}>
             {foodTypes.map((foodtype) => (
-              <Link to={`$/foods/${foodtype.name}`} key={foodtype.id}>
+              <Link to={`/foods/${foodtype.name}`} key={foodtype.id}>
                 <div className={classes.foodtypeName}>
                   <h4>{foodtype.name}</h4>
                 </div>
