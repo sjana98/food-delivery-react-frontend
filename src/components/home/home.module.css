@@ -1,8 +1,8 @@
 /* hero's second section*/
 .delivery {
-  width: 100%;
+  width: 85%;
   height: 100%;
-  margin: 4rem 0rem;
+  margin: 4rem auto;
 }
 
 .titles {
@@ -55,18 +55,19 @@
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   text-align: center;
 }
 
-.deliveryInfo > h3 {
+.deliveryInfo > h4 {
   color: var(--dark-gray-color);
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: bold;
   margin-bottom: 1.5rem;
+  width: 180px;
 }
 
 .firstImg,
@@ -90,7 +91,7 @@
     margin-top: -20rem;
   }
 
-  .deliveryInfo > h3 {
+  .deliveryInfo > h4 {
     font-size: 0.9rem;
   }
 }
@@ -109,7 +110,7 @@
     font-size: 1.6rem;
   }
 
-  .deliveryInfo > h3 {
+  .deliveryInfo > h4 {
     font-size: 0.7rem;
   }
 }
@@ -129,7 +130,7 @@
     margin-bottom: -1.8rem;
   }
 
-  .deliveryInfo > h3 {
+  .deliveryInfo > h4 {
     font-size: 0.8rem;
     margin-bottom: 1.3rem;
   }
