@@ -1,0 +1,191 @@
+.container {
+  width: 100%;
+  height: 100%;
+  margin: 5rem 0;
+  margin-top: 1rem;
+  padding-top: 5rem;
+  background-color: var(--light-bg-color);
+}
+
+.wrapper {
+  width: 85%;
+  height: 100%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: start;
+}
+
+.subtitle {
+  color: var(--dark-gray-color);
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.title {
+  text-align: center;
+  color: var(--light-red-color);
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.foods {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 36px;
+  margin-bottom: 2rem;
+}
+
+.foodtypeName {
+  position: relative;
+  bottom: -28px;
+  left: -6px;
+  width: 33%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  z-index: 1;
+  background-color: var(--light-red-color);
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  -webkit-box-shadow: 0 4px 5px rgba(5, 5, 5, 0.436);
+  box-shadow: 0 4px 5px rgba(5, 5, 5, 0.436);
+}
+
+.foodtypeName h4 {
+  padding: 5px 10px;
+  font-size: 1.2rem;
+  color: var(--white-color);
+  font-weight: bold;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.imgContainer {
+  height: 230px;
+  width: 230px;
+  overflow: hidden;
+}
+
+.imgContainer > img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  cursor: pointer;
+  -webkit-transition: 250ms all ease-in-out;
+  -o-transition: 250ms all ease-in-out;
+  transition: 250ms all ease-in-out;
+}
+
+.imgContainer > img:hover {
+  scale: 1.1;
+}
+
+/* ===Responsiveness CSS=== */
+/* For Laptop */
+@media all and (max-width: 1024px) {
+  .container {
+    margin-top: 1rem;
+    padding-top: 1rem;
+  }
+
+  .foodtypeName {
+    bottom: -25px;
+  }
+
+  .imgContainer {
+    height: 190px;
+    width: 190px;
+  }
+
+  .foodtypeName h4 {
+    font-size: 1rem;
+  }
+}
+
+/* For tablet */
+@media all and (max-width: 769px) {
+  .container {
+    margin-top: 0rem;
+    padding-top: 0rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .foods {
+    gap: 28px;
+  }
+
+  .foodtypeName {
+    bottom: -28px;
+    width: 38%;
+  }
+
+  .imgContainer {
+    height: 130px;
+    width: 130px;
+  }
+
+  .foodtypeName h4 {
+    font-size: 0.8rem;
+  }
+}
+
+/* For mobile */
+@media all and (max-width: 376px) {
+  .container {
+    margin-top: -1rem;
+  }
+
+  .title {
+    font-size: 1.3rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .imgContainer {
+    height: 100px;
+    width: 200px;
+    margin-bottom: -0.5rem;
+  }
+
+  .foodtypeName {
+    bottom: -28px;
+    width: 25%;
+  }
+
+  .foodtypeName h4 {
+    padding: 4px 8px;
+    font-size: 0.7rem;
+  }
+
+  .foods {
+    display: block;
+    margin-bottom: 2rem;
+  }
+}
