@@ -1,117 +1,141 @@
 /* hero's second section*/
-.delivery{
-    width: 100%;
-    height: 100%;
-    margin: 4rem 0rem;
+.delivery {
+  width: 100%;
+  height: 100%;
+  margin: 4rem 0rem;
 }
 
-.titles{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    gap: 8px;
-    margin-bottom: 2rem;
+.titles {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
+  gap: 8px;
+  margin-bottom: 2rem;
 }
 
-.deliverySubtitle{
-    color: var(--dark-gray-color);
-    font-size: 1.25rem;
+.deliverySubtitle {
+  color: var(--dark-gray-color);
+  font-size: 1.25rem;
 }
 
-.deliveryTitle{
-    color: var(--light-red-color);
-    font-size: 1.75rem;
-    font-weight: bold;
+.deliveryTitle {
+  color: var(--light-red-color);
+  font-size: 1.75rem;
+  font-weight: bold;
 }
 
-.deliveryInfos{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.deliveryInfos {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
-.deliveryInfo{
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    align-items: center;
-    text-align: center;
+.deliveryInfo {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 12px;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
 }
 
-.deliveryInfo > h3{
-    color: var(--dark-gray-color);
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin-bottom: 1.5rem;
+.deliveryInfo > h3 {
+  color: var(--dark-gray-color);
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
 }
 
-.firstImg, .secondImg, .thirdImg{
-    object-fit: contain;
-    width: 150px;
-    height: 150px;
+.firstImg,
+.secondImg,
+.thirdImg {
+  -o-object-fit: contain;
+  object-fit: contain;
+  width: 150px;
+  height: 150px;
 }
 
-.firstImg{
-    object-fit: cover !important;
+.firstImg {
+  -o-object-fit: cover !important;
+  object-fit: cover !important;
 }
-
 
 /* Responsivenes CSS */
 /* For laptop */
-@media screen and (max-width: 1024px){
-    .delivery{
-        margin-top: -20rem;
-    }
-    
-    .deliveryInfo > h3{
-        font-size: .9rem;
-    }
+@media screen and (max-width: 1024px) {
+  .delivery {
+    margin-top: -20rem;
+  }
+
+  .deliveryInfo > h3 {
+    font-size: 0.9rem;
+  }
 }
 
 /* For tablet */
-@media screen and (max-width: 769px){
-    .delivery{
-        margin-top: -12rem;
-    }
+@media screen and (max-width: 769px) {
+  .delivery {
+    margin-top: -12rem;
+  }
 
-    .deliverySubtitle{
-        font-size: 1.1rem;
-    }
+  .deliverySubtitle {
+    font-size: 1.1rem;
+  }
 
-    .deliveryTitle{
-        font-size: 1.6rem;
-    }
-    
-    .deliveryInfo > h3{
-        font-size: .7rem;
-    }
+  .deliveryTitle {
+    font-size: 1.6rem;
+  }
+
+  .deliveryInfo > h3 {
+    font-size: 0.7rem;
+  }
 }
 
 /* For mobile */
-@media screen and (max-width: 376px){
-    .delivery{
-        margin-top: 2.5rem;
-    }
+@media screen and (max-width: 376px) {
+  .delivery {
+    margin-top: 2.5rem;
+  }
 
-    .deliverySubtitle{
-        font-size: 1rem;
-    }
+  .deliverySubtitle {
+    font-size: 1rem;
+  }
 
-    .deliveryTitle{
-        font-size: 1.5rem;
-        margin-bottom: -1.8rem;
-    }
-    
-    .deliveryInfo > h3{
-        font-size: .8rem;
-        margin-bottom: 1.3rem;
-    }
+  .deliveryTitle {
+    font-size: 1.5rem;
+    margin-bottom: -1.8rem;
+  }
 
-    .deliveryInfos{
-        display: block;
-    }
+  .deliveryInfo > h3 {
+    font-size: 0.8rem;
+    margin-bottom: 1.3rem;
+  }
+
+  .deliveryInfos {
+    display: block;
+  }
 }
 /* hero's second section end*/
-
