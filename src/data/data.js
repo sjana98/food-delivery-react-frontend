@@ -4,11 +4,11 @@ import burger3 from '../assets/burger3.jpg'
 import burger4 from '../assets/burger4.jpg'
 import burger5 from '../assets/burger5.jpg'
 
-import gyros1 from '../assets/gyros1.jpg'
-import gyros2 from '../assets/gyros2.jpg'
-import gyros3 from '../assets/gyros3.jpg'
-import gyros4 from '../assets/gyros4.jpg'
-import gyros5 from '../assets/gyros5.jpg'
+import rollwich1 from '../assets/rollwich1.jpg'
+import rollwich2 from '../assets/rollwich2.jpg'
+import rollwich3 from '../assets/rollwich3.jpg'
+import rollwich4 from '../assets/rollwich4.jpg'
+import rollwich5 from '../assets/rollwich5.jpg'
 
 import pizza1 from '../assets/pizza1.jpg'
 import pizza2 from '../assets/pizza2.jpg'
@@ -30,8 +30,8 @@ export const foodTypes = [
         id: crypto.randomUUID()
     },
     {
-        name: 'gyros',
-        img: gyros1,
+        name: 'rollwich',
+        img: rollwich3,
         id: crypto.randomUUID()
     },
     {
@@ -47,7 +47,7 @@ export const foodTypes = [
 ]
 
 
-// 24 foods (6 burger, 6 gyros, 6 pizza, 6 pasta)
+// 24 foods (6 burger, 6 rollwich, 6 pizza, 6 pasta)
 export const foods = [
     {
         name: 'Burger 1',
@@ -120,37 +120,37 @@ export const foods = [
         price: Math.floor(Math.random() * 20 + 7)
     },
     {
-        name: 'Gyros 1',
-        category: 'gyros',
-        img: gyros1,
+        name: 'rollwich 1',
+        category: 'rollwich',
+        img: rollwich1,
         id: crypto.randomUUID(),
         price: Math.floor(Math.random() * 20 + 7)
     },
     {
-        name: 'Gyros 2',
-        category: 'gyros',
-        img: gyros2,
+        name: 'rollwich 2',
+        category: 'rollwich',
+        img: rollwich2,
         id: crypto.randomUUID(),
         price: Math.floor(Math.random() * 20 + 7)
     },
     {
-        name: 'Gyros 3',
-        category: 'gyros',
-        img: gyros3,
+        name: 'rollwich 3',
+        category: 'rollwich',
+        img: rollwich3,
         id: crypto.randomUUID(),
         price: Math.floor(Math.random() * 20 + 7)
     },
     {
-        name: 'Gyros 4',
-        category: 'gyros',
-        img: gyros4,
+        name: 'rollwich 4',
+        category: 'rollwich',
+        img: rollwich4,
         id: crypto.randomUUID(),
         price: Math.floor(Math.random() * 20 + 7)
     },
     {
-        name: 'Gyros 5',
-        category: 'gyros',
-        img: gyros5,
+        name: 'rollwich 5',
+        category: 'rollwich',
+        img: rollwich5,
         id: crypto.randomUUID(),
         price: Math.floor(Math.random() * 20 + 7)
     },
