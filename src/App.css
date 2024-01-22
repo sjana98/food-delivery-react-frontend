@@ -30,6 +30,6 @@ body {
 }
 
 /* Common CSS */
-a, button {
+a, button, input {
   all: unset;
 }

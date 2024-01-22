@@ -5,6 +5,7 @@ import Foods from '../foods/Foods';
 import illustration1 from "../../assets/male-delivery-guy-riding-scooter.svg";
 import illustration2 from "../../assets/delivery-location.svg";
 import illustration3 from "../../assets/deliveryman-with-pizza.svg";
+import Newsletter from '../newsletter/Newsletter';
 
 function Home() {
   return (
@@ -34,7 +35,8 @@ function Home() {
             </div>
           </div>
           {/* hero section end*/}
-          <Foods/>
+          <Foods />
+          <Newsletter />
         </div>
       </div>
     </>
