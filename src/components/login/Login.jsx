@@ -26,7 +26,7 @@ function Login() {
 
     if (!password) {
       error.password = "Enter password!";
-    } else if (password.length < 5) {
+    } else if (password.length <= 5) {
       error.password = "Password must be more than 5 char!";
     } else {
       error.password = "";
