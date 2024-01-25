@@ -7,10 +7,48 @@ import { LiaEyeSolid, LiaEyeSlashSolid } from "react-icons/lia";
 
 function Login() {
 
-    const [email, setEmail] = useState();
     const [name, setName] = useState();
+    const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [passwordShowIcon, setPasswordShowIcon] = useState(false);
+    const [errors, setErrors] = useState([]);
+
+    const validate = () => {         // Form Validation
+        const error = {};
+
+        if (!name) {
+            error.name = "Enter your name!"
+        } else if (name.length <= 1) {
+            error.name = "Name must be more than 1 letter!"
+        } else {
+            error.name = "";
+        };
+
+        if (!email) {
+            error.email = "Enter your email!"
+        } else if (!/\S+@\S+\.\S+/.test(email)) {
+            error.email = "Email is not valid format!"
+        } else {
+            error.email = "";
+        };
+
+        if (!password) {
+            error.password = "Enter password!"
+        } else if (password.length <= 5) {
+            error.password = "Password must be more than 5 char!"
+        } else {
+            error.password = "";
+        };
+
+        return error;
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const errorsList = validate();
+        setErrors(errorsList);
+    };
+
     
 
     return (
@@ -20,9 +58,13 @@ function Login() {
 
                     <div className={classes.col}>
                         <div className={classes.title}>Sign Up</div>
-                        <form action="" className={classes.signupForm}>
+                        <form action="" onSubmit={handleSubmit} className={classes.signupForm}>
                             <input type='text' placeholder='Enter Name*' value={name} onChange={(e) => setName(e.target.value)} />
+                            {errors && <div className={classes.errorMsg}>{errors.name}</div>} 
+
                             <input type='text' placeholder='Enter Email*' value={email} onChange={(e) => setEmail(e.target.value)} />
+                            {errors && <div className={classes.errorMsg}>{errors.email}</div>} 
+
                             <span className={classes.passwordWrap}>
                                 <input type={(!passwordShowIcon && "password") || (passwordShowIcon && "text")} placeholder='Enter Password*' value={password} onChange={(e) => setPassword(e.target.value)} />
                                 <span onClick={() => setPasswordShowIcon((pre) => (!pre))}>
@@ -30,13 +72,15 @@ function Login() {
                                     {!passwordShowIcon && <LiaEyeSlashSolid className={classes.toggleIcon} />}
                                 </span>
                             </span>
+                            {errors && <div className={classes.errorMsg}>{errors.password}</div>} 
+
                             <p>Already have an account? <span><Link to="/login">Login</Link></span> </p>
                             <button type='Submit' className={classes.signupBtn}>Submit</button>
                         </form>
                     </div>
                     
                     <div className={classes.col}>
-                        <img src={womaneating} alt="signup_img" className={classes.leftImg} />
+                        <img src={womaneating} alt="signup_img" />
                     </div>
 
                 </div>
