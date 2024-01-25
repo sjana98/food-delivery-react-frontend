@@ -48,7 +48,7 @@ function Login() {
         <div className={classes.wrapper}>
 
           <div className={classes.col}>
-            <img src={womaneating} alt="login_img" className={classes.leftImg} />
+            <img src={womaneating} alt="login_img"/>
           </div>
 
           <div className={classes.col}>
