@@ -32,7 +32,7 @@ function Navbar() {
                 <a href="/">Home</a>
               </li>
               <li className={classes.listItem}>
-                <a href="/Contacts">Contacts</a>
+                <a href="/contacts">Contacts</a>
               </li>
               <li className={classes.listItem}>
                 <a href="/foods">Foods</a>

@@ -5,7 +5,7 @@ import womaneating from "../../assets/womaneating2.jpg";
 import { LiaEyeSolid, LiaEyeSlashSolid } from "react-icons/lia";
 
 
-function Login() {
+function Signup() {
 
     const [name, setName] = useState();
     const [email, setEmail] = useState();
@@ -89,4 +89,4 @@ function Login() {
     )
 }
 
-export default Login
+export default Signup
