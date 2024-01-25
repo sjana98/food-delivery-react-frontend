@@ -103,6 +103,14 @@
 .toggleIcon:hover {
   color: var(--dark-gray-color);
 }
+
+.errorMsg{
+  text-align: start;
+  font-size: .6rem;
+  margin-left: 22px;
+  margin-top: -6px;
+  color: var(--red-color);
+}
 /* Form area end */
 
 .loginForm p {

@@ -10,6 +10,37 @@ function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [passwordShowIcon, setPasswordShowIcon] = useState(false);
+  const [errors, setErrors] = useState([]);
+
+  
+  const validate = () => {
+    const error = {};
+
+    if (!email) {
+      error.email = "Email is required!";
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      error.email = "Email is not valid format!";
+    } else {
+      error.email = "";
+    };
+
+    if (!password) {
+      error.password = "Password is required!";
+    } else if (password.length < 5) {
+      error.password = "Minimum 6 digits password!";
+    } else {
+      error.password = "";
+    };
+
+    return error;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const errorMsgs = validate();
+    setErrors(errorMsgs);
+  };
+
 
   return (
     <>
@@ -22,8 +53,11 @@ function Login() {
 
           <div className={classes.col}>
             <div className={classes.title}>Login</div>
-            <form action="" className={classes.loginForm}>
-              <input type='email' placeholder='Enter email' value={email} onChange={(e)=>setEmail(e.target.value)} />
+
+            <form onSubmit={handleSubmit} action="" className={classes.loginForm}>
+              <input type='text' placeholder='Enter email' value={email} onChange={(e) => setEmail(e.target.value)} />
+              {errors && <div className={classes.errorMsg}>{errors.email}</div>}
+              
               <span className={classes.passwordWrap}>
                 <input type={(!passwordShowIcon && "password") || (passwordShowIcon && "text")} placeholder='Enter password' value={password} onChange={(e) => setPassword(e.target.value)} />
                 <span onClick={()=>setPasswordShowIcon((pre)=>(!pre))}>
@@ -31,6 +65,8 @@ function Login() {
                   {!passwordShowIcon && <LiaEyeSlashSolid className={classes.toggleIcon}/>}
                 </span>
               </span>
+              {errors && <div className={classes.errorMsg}>{errors.password}</div> }
+
               <p>Don't have an account? <span><Link to="/signup">Sign Up</Link></span> </p>
               <button type='Submit' className={classes.loginBtn}>Submit</button>
             </form>
