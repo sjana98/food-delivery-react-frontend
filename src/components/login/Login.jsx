@@ -67,7 +67,7 @@ function Login() {
               </span>
               {errors && <div className={classes.errorMsg}>{errors.password}</div> }
 
-              <p>Don't have an account? <span><Link to="/signup">Sign Up</Link></span> </p>
+              <p>Don't have an account? <span><Link to="/Signup">Sign Up</Link></span> </p>
               <button type='Submit' className={classes.loginBtn}>Submit</button>
             </form>
 
