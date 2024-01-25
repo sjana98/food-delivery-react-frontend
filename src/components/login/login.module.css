@@ -151,7 +151,7 @@
 /* laptop screen */
 @media all and (max-width: 1025px) {
   .container {
-    height: 65vh;
+    height: 85vh;
     padding: 9.375rem 0;
   }
 }
@@ -165,6 +165,10 @@
   .wrapper {
     width: 26.25rem;
     height: 17.1875rem;
+  }
+
+  .title {
+    margin-bottom: 15px;
   }
 
   .loginForm input {
@@ -185,7 +189,7 @@
     display: block;
   }
   .title {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     padding-top: 6px;
   }
   .col {

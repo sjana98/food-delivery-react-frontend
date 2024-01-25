@@ -17,7 +17,7 @@ function Login() {
     const error = {};
 
     if (!email) {
-      error.email = "Email is required!";
+      error.email = "Enter your signed up email!";
     } else if (!/\S+@\S+\.\S+/.test(email)) {
       error.email = "Email is not valid format!";
     } else {
@@ -25,9 +25,9 @@ function Login() {
     };
 
     if (!password) {
-      error.password = "Password is required!";
+      error.password = "Enter password!";
     } else if (password.length < 5) {
-      error.password = "Minimum 6 digits password!";
+      error.password = "Password must be more than 5 char!";
     } else {
       error.password = "";
     };
@@ -55,11 +55,11 @@ function Login() {
             <div className={classes.title}>Login</div>
 
             <form onSubmit={handleSubmit} action="" className={classes.loginForm}>
-              <input type='text' placeholder='Enter email' value={email} onChange={(e) => setEmail(e.target.value)} />
+              <input type='text' placeholder='Enter your email*' value={email} onChange={(e) => setEmail(e.target.value)} />
               {errors && <div className={classes.errorMsg}>{errors.email}</div>}
               
               <span className={classes.passwordWrap}>
-                <input type={(!passwordShowIcon && "password") || (passwordShowIcon && "text")} placeholder='Enter password' value={password} onChange={(e) => setPassword(e.target.value)} />
+                <input type={(!passwordShowIcon && "password") || (passwordShowIcon && "text")} placeholder='Enter password*' value={password} onChange={(e) => setPassword(e.target.value)} />
                 <span onClick={()=>setPasswordShowIcon((pre)=>(!pre))}>
                   {passwordShowIcon && <LiaEyeSolid className={classes.toggleIcon}  />}
                   {!passwordShowIcon && <LiaEyeSlashSolid className={classes.toggleIcon}/>}
