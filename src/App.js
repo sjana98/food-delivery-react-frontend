@@ -10,6 +10,7 @@ import FoodDetails from './components/foodDetails/FoodDetails';
 import FoodCatalog from './components/foodCatalog/FoodCatalog';
 import Cart from './components/cart/Cart';
 import Checkout from './components/checkout/Checkout';
+import LoginPassword from './components/loginPasswordChange/LoginPassword';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path='/foods/:id' element={<FoodCatalog />} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/checkout' element={<Checkout />} />
+          <Route path='/passwordChange' element={<LoginPassword />} />
         </Routes>
       </Router>
 
