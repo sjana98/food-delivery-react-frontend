@@ -92,7 +92,7 @@ function Signup() {
                     </div>
                     
                     <div className={classes.wrongCredentialsWrap}>
-                        {wrongCredentials && <div className={classes.wrongCredentials}>Already have user with this email id!!</div>}
+                        {wrongCredentials && <p className={classes.wrongCredentials}>Already have an user with this email id!!</p>}
                     </div>
                     
                     <div className={classes.col}>
