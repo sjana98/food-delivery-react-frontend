@@ -1,19 +1,26 @@
 import React, { useState } from 'react';
 import classes from "./login.module.css";
-import {Link} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import axios from "axios";
 import womaneating from "../../assets/womaneating.jpg";
 import { LiaEyeSolid, LiaEyeSlashSolid } from "react-icons/lia";
+import { login } from '../../reduxToolkit/authSlice';
 
 
 function Login() {
 
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [passwordShowIcon, setPasswordShowIcon] = useState(false);
   const [errors, setErrors] = useState([]);
+  const [wrongCredentials, setWrongCredentials] = useState(false);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   
-  const validate = () => {
+  const validate = () => {     // Form Validation
     const error = {};
 
     if (!email) {
@@ -35,10 +42,32 @@ function Login() {
     return error;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const errorMsgs = validate();
+    const errorMsgs = validate(); // Form Validation handle
     setErrors(errorMsgs);
+    
+    try {           // API integration
+
+      const loginAPI = "http://localhost:5000/auth/login";
+      const createRequest = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        data: { email, password },
+      };
+      const data = await axios(loginAPI, createRequest);
+      dispatch(login(data));
+      navigate("/");
+      
+    } catch (error) {
+
+      setWrongCredentials(true);
+      setTimeout(() => {
+        setWrongCredentials(false);
+      }, 3000);
+
+    };
+
   };
 
 
@@ -72,6 +101,7 @@ function Login() {
               <button type='Submit' className={classes.loginBtn}>Submit</button>
             </form>
 
+            {wrongCredentials && <div className={classes.wrongCredentials}>Wrong Credentials!!</div>}
           </div>
         </div>
       </div>

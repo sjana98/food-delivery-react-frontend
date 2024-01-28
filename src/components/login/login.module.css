@@ -112,6 +112,20 @@
   margin-top: -6px;
   color: var(--red-color);
 }
+
+.wrongCredentials{
+  position: absolute;
+  top: 15%;
+  left: 45%;
+  width: 100px;
+  height: 20px;
+  text-align: center;
+  padding: 4px 0;
+  background: var(--white-color);
+  color: var(--red-color);
+  border-radius: 3px;
+  font-size: 10px;
+}
 /* Form area end */
 
 .loginForm > p {
@@ -196,6 +210,11 @@
     margin: 13px 0;
     font-size: 0.6rem;
   }
+
+  .wrongCredentials{
+    top: 13%;
+    left: 43%;
+  }
 }
 
 /* mobile screen */
@@ -224,6 +243,11 @@
 
   .loginForm input {
     width: 12.1875rem;
+  }
+
+  .wrongCredentials{
+    top: 16%;
+    left: 36%;
   }
 
   .wrapper .col img {
