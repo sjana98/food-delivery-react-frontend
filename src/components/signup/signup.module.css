@@ -1,7 +1,7 @@
 .container {
   height: 100vh;
-  padding: 9.375rem 0;
   width: 100%;
+  padding: 9.375rem 0;
   background-color: var(--morelighter-red-color);
 }
 
@@ -114,6 +114,27 @@
   margin-top: -6px;
   color: var(--red-color);
 }
+
+.wrongCredentialsWrap{
+  width: 100%;
+  height: 20px;
+  position: absolute;
+  left: 0;
+  top: 90px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.wrongCredentials{
+  width: 190px;
+  height: 100%;
+  padding: 4px 0;
+  background: var(--white-color);
+  color: var(--red-color);
+  border-radius: 3px;
+  font-size: 10px;
+}
 /* Form area end */
 
 .signupForm p {
@@ -159,7 +180,7 @@
 /* laptop screen */
 @media all and (max-width: 1025px) {
   .container {
-    height: 85vh;
+    height: 70vh;
     padding: 9.375rem 0;
   }
 }
@@ -181,9 +202,6 @@
 
   .signupForm input {
     margin: 0.4rem 0;
-  }
-
-  .signupForm input {
     width: 9.6875rem;
   }
 
@@ -205,6 +223,10 @@
     height: 390px;
     margin: 0 auto;
     display: block;
+  }
+  
+  .wrongCredentialsWrap{
+    top: 100px;
   }
 
   .title {

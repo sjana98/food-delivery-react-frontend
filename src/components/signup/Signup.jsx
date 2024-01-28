@@ -12,6 +12,8 @@ function Signup() {
     const [password, setPassword] = useState();
     const [passwordShowIcon, setPasswordShowIcon] = useState(false);
     const [errors, setErrors] = useState([]);
+    const [wrongCredentials, setWrongCredentials] = useState(true);
+
 
     const validate = () => {         // Form Validation
         const error = {};
@@ -47,6 +49,16 @@ function Signup() {
         e.preventDefault();
         const errorsList = validate();
         setErrors(errorsList);
+
+        try {
+            
+        } catch (error) {
+
+            setWrongCredentials(true);
+            setTimeout(() => {
+                setWrongCredentials(true);
+            }, 3000);
+        };
     };
 
     
@@ -77,6 +89,10 @@ function Signup() {
                             <p>Already have an account? <span><Link to="/Login">Login</Link></span> </p>
                             <button type='Submit' className={classes.signupBtn}>Submit</button>
                         </form>
+                    </div>
+                    
+                    <div className={classes.wrongCredentialsWrap}>
+                        {wrongCredentials && <div className={classes.wrongCredentials}>Already have user with this email id!!</div>}
                     </div>
                     
                     <div className={classes.col}>
