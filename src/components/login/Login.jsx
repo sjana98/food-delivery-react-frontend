@@ -60,11 +60,16 @@ function Login() {
       navigate("/");
       
     } catch (error) {
-
-      setWrongCredentials(true);
-      setTimeout(() => {
-        setWrongCredentials(false);
-      }, 4000);
+      if (error.response) {
+        setWrongCredentials(true);
+        setTimeout(() => {
+          setWrongCredentials(false);
+        }, 4000);
+      } else if(error.request){
+        alert("Something went wrong. Try again later!!");
+      } else {
+        console.error('Error during request setup:', error.message);
+      }
 
     };
 
