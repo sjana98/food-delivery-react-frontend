@@ -64,7 +64,7 @@ function Login() {
       setWrongCredentials(true);
       setTimeout(() => {
         setWrongCredentials(false);
-      }, 3000);
+      }, 4000);
 
     };
 
@@ -100,8 +100,10 @@ function Login() {
               <p className={classes.forgotPass}><Link to="/passwordChange">Forgot Password?</Link></p>
               <button type='Submit' className={classes.loginBtn}>Submit</button>
             </form>
+          </div>
 
-            {wrongCredentials && <div className={classes.wrongCredentials}>Wrong Credentials!!</div>}
+          <div className={classes.wrongCredentials}>
+            {wrongCredentials && <p className={classes.alertMsg}>Wrong Credentials!!</p>}
           </div>
         </div>
       </div>

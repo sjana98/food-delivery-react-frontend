@@ -16,7 +16,7 @@
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  background-color: var(--white-color);
+  background-color: var(--morelight-yellow-color);
   overflow: hidden;
   -webkit-box-shadow: 0 8px 8px rgb(0, 0, 0, 0.3);
   box-shadow: 0 8px 8px rgb(0, 0, 0, 0.3);
@@ -114,12 +114,19 @@
 }
 
 .wrongCredentials{
-  position: absolute;
-  top: 15%;
-  left: 45%;
-  width: 100px;
+  width: 100%;
   height: 20px;
+  position: absolute;
+  left: 0;
+  top: 90px;
+  display: flex;
+  justify-content: center;
   text-align: center;
+}
+
+.alertMsg{
+  width: 110px;
+  height: 100%;
   padding: 4px 0;
   background: var(--white-color);
   color: var(--red-color);
@@ -210,11 +217,6 @@
     margin: 13px 0;
     font-size: 0.6rem;
   }
-
-  .wrongCredentials{
-    top: 13%;
-    left: 43%;
-  }
 }
 
 /* mobile screen */
@@ -237,17 +239,17 @@
     width: 100%;
     height: 5rem;
   }
+  
+  .wrongCredentials{
+    top: 100px;
+  }
+
   .loginForm {
     text-align: center;
   }
 
   .loginForm input {
     width: 12.1875rem;
-  }
-
-  .wrongCredentials{
-    top: 16%;
-    left: 36%;
   }
 
   .wrapper .col img {
