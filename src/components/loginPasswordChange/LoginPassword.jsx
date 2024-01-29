@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import classes from "./loginPassword.module.css";
 import { LiaEyeSolid, LiaEyeSlashSolid } from "react-icons/lia";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function LoginPassword() {
 
@@ -10,9 +12,9 @@ function LoginPassword() {
   const [errors, setErrors] = useState([]);
   const [wrongCredentials, setWrongCredentials] = useState(false);
 
+  const  navigate = useNavigate();
 
-
-  const validate = () => {
+  const validate = () => {    // Form validation
     const error = {};
 
     if (!email) {
@@ -34,10 +36,37 @@ function LoginPassword() {
     return error;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const errorMsgs = validate();
+    const errorMsgs = validate(); // Form Validation handle
     setErrors(errorMsgs);
+
+    try {    // API integration
+      const passwordUpdateAPI = "http://localhost:5000/auth/password-update";
+      const createRequest = {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        data: { email, password },
+      };
+      const resultData = await axios(passwordUpdateAPI, createRequest);
+      if (resultData) {
+        alert('Password has been updated successfully!');
+        navigate("/login");
+      };
+
+    } catch (error) {
+      if (error.response) {
+        setWrongCredentials(true);
+        setTimeout(() => {
+        setWrongCredentials(false);
+        }, 5000);
+      } else if (error.request) {
+        alert("Something went wrong. Try again later!!");
+      } else {
+        console.log('Error', error.message);
+      };
+
+    };
   };
 
 
@@ -62,12 +91,12 @@ function LoginPassword() {
               </span>
               {errors && <div className={classes.errorMsg}>{errors.password}</div>}
 
-              <button type='Submit' className={classes.loginBtn}>Reset</button>
+              <button type='Submit' className={classes.loginBtn}>Update</button>
             </form>
           </div>
 
           <div className={classes.wrongCredentials}>
-            {wrongCredentials && <p className={classes.alertMsg}>Wrong email id!!</p>}
+            {wrongCredentials && <p className={classes.alertMsg}>This email does not exist!!</p>}
           </div>
         </div>
       </div>
