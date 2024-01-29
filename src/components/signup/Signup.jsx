@@ -1,29 +1,34 @@
 import React, { useState } from 'react';
 import classes from "./signup.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import womaneating from "../../assets/womaneating2.jpg";
 import { LiaEyeSolid, LiaEyeSlashSolid } from "react-icons/lia";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { signup } from "../../reduxToolkit/authSlice";
 
 
 function Signup() {
 
-    const [name, setName] = useState();
+    const [username, setUsername] = useState();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [passwordShowIcon, setPasswordShowIcon] = useState(false);
     const [errors, setErrors] = useState([]);
-    const [wrongCredentials, setWrongCredentials] = useState(true);
+    const [wrongCredentials, setWrongCredentials] = useState(false);
 
+    const dispatch = useDispatch();
+    const  navigate = useNavigate();
 
     const validate = () => {         // Form Validation
         const error = {};
 
-        if (!name) {
-            error.name = "Enter your name!"
-        } else if (name.length <= 1) {
-            error.name = "Name must be more than 1 letter!"
+        if (!username) {
+            error.username = "Enter your name!"
+        } else if (username.length <= 1) {
+            error.username = "Name must be more than 1 letter!"
         } else {
-            error.name = "";
+            error.username = "";
         };
 
         if (!email) {
@@ -45,19 +50,35 @@ function Signup() {
         return error;
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
-        const errorsList = validate();
+        const errorsList = validate();     // Fotm validation handle
         setErrors(errorsList);
 
-        try {
+        try {     // API integration
+            const signupAPI = "http://localhost:5000/auth/register";
+            const createRequest = {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                data: { username, email, password },
+            };
+
+            const responseData = await axios(signupAPI, createRequest);
+            dispatch(signup(responseData));
+            navigate("/");
             
         } catch (error) {
-
-            setWrongCredentials(true);
-            setTimeout(() => {
+            if (error.response) {
                 setWrongCredentials(true);
-            }, 3000);
+                setTimeout(() => {
+                    setWrongCredentials(false);
+                }, 4000);
+            } else if (error.request) {
+                alert("Something went wrong. Try again later!!")
+            } else {
+                console.error("Error during request setup:", error.message);
+            };
+
         };
     };
 
@@ -71,8 +92,8 @@ function Signup() {
                     <div className={classes.col}>
                         <div className={classes.title}>Sign Up</div>
                         <form action="" onSubmit={handleSubmit} className={classes.signupForm}>
-                            <input type='text' placeholder='Enter Name*' value={name} onChange={(e) => setName(e.target.value)} />
-                            {errors && <div className={classes.errorMsg}>{errors.name}</div>} 
+                            <input type='text' placeholder='Enter Name*' value={username} onChange={(e) => setUsername(e.target.value)} />
+                            {errors && <div className={classes.errorMsg}>{errors.username}</div>} 
 
                             <input type='text' placeholder='Enter Email*' value={email} onChange={(e) => setEmail(e.target.value)} />
                             {errors && <div className={classes.errorMsg}>{errors.email}</div>} 
@@ -91,14 +112,13 @@ function Signup() {
                         </form>
                     </div>
                     
-                    <div className={classes.wrongCredentialsWrap}>
-                        {wrongCredentials && <p className={classes.wrongCredentials}>Already have an user with this email id!!</p>}
-                    </div>
-                    
                     <div className={classes.col}>
                         <img src={womaneating} alt="signup_img" />
                     </div>
 
+                    <div className={classes.wrongCredentials}>
+                        {wrongCredentials && <p className={classes.alertMsg}>Already have an user with this email id!!</p>}
+                    </div>
                 </div>
             </div>
         </>
