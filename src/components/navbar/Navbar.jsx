@@ -29,16 +29,16 @@ function Navbar() {
           <div className={classes.center}>
             <ul className={classes.list}>
               <li className={classes.listItem}>
-                <NavLink to="/" exact>Home</NavLink>
+                <NavLink to="/">Home</NavLink>
               </li>
               <li className={classes.listItem}>
-                <NavLink to="/contacts" exact>Contacts</NavLink>
+                <NavLink to="/foods">Foods</NavLink>
               </li>
               <li className={classes.listItem}>
-                <NavLink to="/foods" exact>Foods</NavLink>
+                <NavLink to="/about">About</NavLink>
               </li>
               <li className={classes.listItem}>
-                <NavLink to="/faq" exact>FAQ</NavLink>
+                <NavLink to="/contacts">Contacts</NavLink>
               </li>
             </ul>
           </div>
