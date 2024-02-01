@@ -27,6 +27,7 @@ body {
   --light-yellow-color:#e8d873;
   --morelight-yellow-color: #ffffdf;
   --yellow-color:#e4cb2e;
+  --orange-color:#ffae00;
   --light-gray-color: #d3c5c5;
   --medium-gray-color: #888;
   --dark-gray-color: #444;
@@ -40,3 +41,7 @@ a, button, input {
 li{
   list-style: none;
 }
+
+a.active {
+  color: var(--yellow-color) !important;
+} 

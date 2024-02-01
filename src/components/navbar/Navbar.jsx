@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import classes from "./navbar.module.css";
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import {AiOutlineUser, AiOutlineShoppingCart} from "react-icons/ai";
 
 
@@ -29,19 +29,19 @@ function Navbar() {
           <div className={classes.center}>
             <ul className={classes.list}>
               <li className={classes.listItem}>
-                <a href="/">Home</a>
+                <NavLink to="/" exact>Home</NavLink>
               </li>
               <li className={classes.listItem}>
-                <a href="/contacts">Contacts</a>
+                <NavLink to="/contacts" exact>Contacts</NavLink>
               </li>
               <li className={classes.listItem}>
-                <a href="/foods">Foods</a>
+                <NavLink to="/foods" exact>Foods</NavLink>
               </li>
               <li className={classes.listItem}>
-                <a href="/faq">FAQ</a>
+                <NavLink to="/faq" exact>FAQ</NavLink>
               </li>
               <li className={classes.listItem}>
-                <Link to="/create">Create</Link>
+                <Link to="/create" exact>Create</Link>
               </li>
             </ul>
           </div>
