@@ -23,7 +23,7 @@ function Navbar() {
         <div className={classes.wrapper}>
 
           <div className={classes.left}>
-            <Link to="/" className={classes.title}>H<span>a</span>p<span>p</span>y<span>f</span>o<span>o</span>D</Link>
+            <Link to="/" className={classes.logo}>H<span>a</span>p<span>p</span>y<span>f</span>o<span>o</span>D</Link>
           </div>
 
           <div className={classes.center}>
@@ -40,13 +40,11 @@ function Navbar() {
               <li className={classes.listItem}>
                 <NavLink to="/faq" exact>FAQ</NavLink>
               </li>
-              <li className={classes.listItem}>
-                <Link to="/create" exact>Create</Link>
-              </li>
             </ul>
           </div>
 
           <div className={classes.right}>
+            <button className={classes.createBtn}><Link to="/create">Create</Link></button>
             <AiOutlineUser className={classes.userIcon} />
             <Link to="/cart" className={classes.cartContainer}>
               <AiOutlineShoppingCart className={classes.cartIcon}/>
