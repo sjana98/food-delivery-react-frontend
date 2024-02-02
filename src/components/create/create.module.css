@@ -1,0 +1,162 @@
+.container {
+  height: calc(100vh - 60px);
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 6rem;
+  margin-bottom: 3rem;
+}
+
+.wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding: 1rem;
+  border: 2px solid var(--morelighter-red-color);
+  border-radius: 30px;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 5px;
+  color: var(--light-red-color);
+}
+
+.inputWrapper {
+  margin: 15px;
+}
+
+.input {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 300px;
+  display: block;
+  border: 1px solid var(--light-yellow-color);
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 5px;
+  font-size: 12px;
+  -webkit-transition: all 230ms ease-in-out;
+  -o-transition: all 230ms ease-in-out;
+  transition: all 230ms ease-in-out;
+}
+
+.input:focus {
+  border: 1.2px solid var(--morelighter-red-color) !important;
+}
+
+.input::-webkit-input-placeholder {
+  color: var(--medium-gray-color);
+}
+
+.input::-moz-placeholder {
+  color: var(--medium-gray-color);
+}
+
+.input:-ms-input-placeholder {
+  color: var(--medium-gray-color);
+}
+
+.input::-ms-input-placeholder {
+  color: var(--medium-gray-color);
+}
+
+.input::placeholder {
+  color: var(--medium-gray-color);
+}
+
+.inputWrapper > textarea {
+  resize: none;
+  width: 100%;
+  height: auto;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+.inputWrapper > label {
+  font-size: 13px;
+  font-weight: 500;
+  margin-top: 5px;
+}
+
+.fileLabelInput > span {
+  display: block;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 9px;
+  font-weight: 500;
+  width: 70px;
+  color: var(--red-color);
+  background-color: var(--white-color);
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid var(--yellow-color);
+}
+
+.fileLabelInput > span:hover {
+  color: var(--white-color);
+  background-color: var(--yellow-color);
+}
+
+.submitBtnWrp {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.SubBtn {
+  background-color: var(--light-red-color);
+  border-radius: 8px;
+  padding: 5px 10px;
+  color: var(--white-color);
+  cursor: pointer;
+  font-size: 16px;
+  border: 1px solid transparent;
+  width: 50%;
+  -webkit-transition: all 300ms ease-in-out;
+  -o-transition: all 300ms ease-in-out;
+  transition: all 300ms ease-in-out;
+}
+
+.SubBtn:hover {
+  background-color: var(--white-color);
+  color: var(--light-red-color);
+  border-color: var(--light-red-color);
+}
+
+/* Responsiveness css */
+/* mobile screen */
+@media all and (max-width: 376px) {
+  .wrapper {
+    padding: 0.4rem;
+    border-radius: 30px;
+    width: 90%;
+  }
+
+  .input {
+    width: 100%;
+  }
+
+  .SubBtn {
+    margin-bottom: 15px;
+  }
+}
