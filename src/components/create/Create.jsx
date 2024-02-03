@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import classes from "./create.module.css";
 import { AiOutlineCloseCircle } from "react-icons/ai";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 function Create() {
   const [title, setTitle] = useState("");
@@ -11,11 +14,9 @@ function Create() {
   const [errorMsg, setErrorMsg] = useState([]);
 
 
-  // const handleImgUpload = () => {
-    
-  // };
+  const navigate = useNavigate();
 
-  const validation = () => {
+  const validation = () => {   
     const error = {};
 
     if (!title) {
@@ -59,8 +60,6 @@ function Create() {
     return error;
   };
 
-  
-
   const handleCloseImg = () => {
     setImage("");
   };
@@ -69,6 +68,49 @@ function Create() {
     e.preventDefault();
     const errors = validation();
     setErrorMsg(errors);
+
+    try {
+      // product's image upload
+      const formData = new FormData();
+      let fileName = null;
+      if (image) {          
+        fileName = Date.now() + image.name;
+        formData.append("filename", fileName);
+        formData.append("image", image);
+
+        const imagePostApi = "http://localhost:5000/upload/image";  
+        const createRequest = {
+          method: "POST",
+          headers: { "Authorization": `Bearer ${JSON.parse(localStorage.getItem("token"))}` },
+          data: formData
+        };
+        await axios(imagePostApi, createRequest);
+      };
+
+      // product upload
+      const productPostApi = "http://localhost:5000/product";
+      const createRequest2 = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${JSON.parse(localStorage.getItem("token"))}`
+        },
+        data: { title, description, category, img:fileName, price },
+      };
+      let responseData = await axios(productPostApi, createRequest2);
+      responseData = responseData.data;
+      navigate(`/food/${responseData._id}`);
+
+    } catch (error) {
+      if (error.response) {
+        alert("You are not an admin!!");
+      } else if(error.request){
+        alert("Something went wrong. Try again later!!");
+      } else {
+        console.error('Error during request setup:', error.message);
+      };
+    };
+
   };
 
 
