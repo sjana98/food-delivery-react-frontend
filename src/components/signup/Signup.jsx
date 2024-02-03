@@ -4,8 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import womaneating from "../../assets/womaneating2.jpg";
 import { LiaEyeSolid, LiaEyeSlashSolid } from "react-icons/lia";
 import axios from "axios";
-import { useDispatch } from "react-redux";
-import { signup } from "../../reduxToolkit/authSlice";
 
 
 function Signup() {
@@ -17,7 +15,6 @@ function Signup() {
     const [errors, setErrors] = useState([]);
     const [wrongCredentials, setWrongCredentials] = useState(false);
 
-    const dispatch = useDispatch();
     const  navigate = useNavigate();
 
     const validate = () => {         // Form Validation
@@ -63,9 +60,13 @@ function Signup() {
                 data: { username, email, password },
             };
 
-            const responseData = await axios(signupAPI, createRequest);
-            dispatch(signup(responseData));
-            navigate("/");
+            let responseData = await axios(signupAPI, createRequest);
+            responseData = responseData.data;
+            if (responseData.Token) {                      // Store jwt token and user details in browser local storage
+                localStorage.setItem("user", JSON.stringify(responseData.newUserDetails));
+                localStorage.setItem("token", JSON.stringify(responseData.Token));
+                navigate("/");
+            };
             
         } catch (error) {
             if (error.response) {

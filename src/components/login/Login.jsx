@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import classes from "./login.module.css";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import axios from "axios";
 import womaneating from "../../assets/womaneating.jpg";
 import { LiaEyeSolid, LiaEyeSlashSolid } from "react-icons/lia";
-import { login } from '../../reduxToolkit/authSlice';
 
 
 function Login() {
@@ -16,8 +14,14 @@ function Login() {
   const [errors, setErrors] = useState([]);
   const [wrongCredentials, setWrongCredentials] = useState(false);
 
-  const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const auth = localStorage.getItem("user");
+    if (auth) {
+      navigate("/");
+    };
+  });
 
   
   const validate = () => {     // Form Validation
@@ -48,16 +52,19 @@ function Login() {
     setErrors(errorMsgs);
     
     try {           // API integration
-
       const loginAPI = "http://localhost:5000/auth/login";
       const createRequest = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         data: { email, password },
       };
-      const data = await axios(loginAPI, createRequest);
-      dispatch(login(data));
-      navigate("/");
+      let resultData = await axios(loginAPI, createRequest);
+      resultData = resultData.data;
+      if (resultData.Token) {                      // Store jwt token and user details in browser local storage
+        localStorage.setItem("user", JSON.stringify(resultData.userExist));
+        localStorage.setItem("token", JSON.stringify(resultData.Token));
+        navigate("/");
+      };
       
     } catch (error) {
       if (error.response) {
@@ -69,7 +76,7 @@ function Login() {
         alert("Something went wrong. Try again later!!");
       } else {
         console.error('Error during request setup:', error.message);
-      }
+      };
 
     };
 
