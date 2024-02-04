@@ -11,6 +11,7 @@ import FoodCatalog from './components/foodCatalog/FoodCatalog';
 import Cart from './components/cart/Cart';
 import Checkout from './components/checkout/Checkout';
 import LoginPassword from './components/loginPasswordChange/LoginPassword';
+import RoutesControll from './components/RoutesControll/RoutesControll';
 
 function App() {
   return (
@@ -18,15 +19,18 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path='/' element={<Home />} />
           <Route path='/Login' element={<Login />} />
           <Route path='/Signup' element={<Signup />} />
-          <Route path='/create' element={<Create />} />
-          <Route path='/food/:id' element={<FoodDetails />} />
-          <Route path='/foods/:id' element={<FoodCatalog />} />
-          <Route path='/cart' element={<Cart />} />
-          <Route path='/checkout' element={<Checkout />} />
           <Route path='/passwordChange' element={<LoginPassword />} />
+          
+          <Route element={<RoutesControll/>}>
+            <Route path='/' element={<Home />} />
+            <Route path='/create' element={<Create />} />
+            <Route path='/food/:id' element={<FoodDetails />} />
+            <Route path='/foods/:id' element={<FoodCatalog />} />
+            <Route path='/cart' element={<Cart />} />
+            <Route path='/checkout' element={<Checkout />} />
+          </Route>
         </Routes>
       </Router>
 

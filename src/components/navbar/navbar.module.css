@@ -115,11 +115,22 @@
 }
 
 .createBtn{
+  border-bottom: 1.5px solid var(--medium-gray-color);
+  border-radius: 8px;
+  cursor: pointer;
+  height: 15px;
+  width: 40px;
+  margin: auto 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.createBtn button{
   font-size: 9px;
   font-weight: 500;
-  padding: 4px;
-  border: 1px solid var(--medium-gray-color);
-  border-radius: 8px;
   cursor: pointer;
 }
 
@@ -132,20 +143,24 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  position: relative;
+  align-items: center;
+  justify-content: center;
   text-decoration: none;
   color: inherit;
 }
 
-.userIcon,
 .cartIcon {
   font-size: 1.5rem;
 }
 
+.userIcon {
+  font-size: 1rem;
+}
+
 .cartQuantity {
-  position: absolute;
+  position: relative;
   top: -7px;
-  right: -7px;
+  right: 10px;
   background-color: var(--red-color);
   color: var(--light-yellow-color);
   height: 18px;
@@ -164,13 +179,31 @@
   opacity: 0.9;
 }
 
-.logout {
+.displayUser{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.displayUser > p{
+  font-size: 11px;
+  text-transform: capitalize;
+  font-weight: 500;
+  color: var(--red-color);
+  margin-bottom: 5px;
+}
+
+.logout,.authBtn {
   color: var(--medium-gray-color);
-  font-size: 1rem;
+  font-size: .85rem;
   margin-left: 1rem;
   cursor: pointer;
 }
 .logout:hover {
+  color: var(--light-gray-color);
+}
+.authBtn:hover {
   color: var(--light-gray-color);
 }
 
@@ -193,7 +226,7 @@
 
   /* right */
   .right {
-    gap: 0.6rem;
+    gap: 0.8rem;
   }
 
   .userIcon,
@@ -207,9 +240,17 @@
     font-size: 0.7rem;
   }
 
-  .logout {
+  .logout, .authBtn {
     font-size: 0.8rem;
-    margin-left: 0.8rem;
+    margin-left: -0.3rem;
+  }
+
+  .userIcon {
+    font-size: .9rem;
+  }
+
+  .displayUser > p{
+    font-size: 9.2px;
   }
 }
 
@@ -217,7 +258,7 @@
 @media all and (max-width: 376px) {
   .container {
     height: 80px;
-    padding-top: 10px;
+    padding-top: 20px;
   }
 
   .wrapper {
@@ -232,9 +273,8 @@
     align-items: center;
   }
 
-  /* right */
+  /* left */
   .logo {
-    padding: 8px;
     font-size: 1rem;
   }
 
@@ -255,9 +295,8 @@
   /* right */
   .right {
     position: absolute;
-    gap: 0.7rem;
     top: 15px;
-    right: 25px;
+    right: 15px;
   }
 
   .userIcon,
@@ -265,7 +304,4 @@
     font-size: 1.1rem;
   }
 
-  .logout {
-    margin-left: 0.5rem;
-  }
 }
