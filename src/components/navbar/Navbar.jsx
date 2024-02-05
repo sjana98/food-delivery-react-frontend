@@ -59,9 +59,9 @@ function Navbar() {
           {auth &&
             <div className={classes.right}>
               {admin &&
-                 <div className={classes.createBtn}>
+                <div className={classes.createBtn}>
                  <button><Link to="/create">Create</Link></button>
-               </div>
+                </div>
               }
               <div className={classes.displayUser}>
                 <AiOutlineUser className={classes.userIcon} />
