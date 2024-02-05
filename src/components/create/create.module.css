@@ -56,6 +56,10 @@
   border: 1.2px solid var(--morelighter-red-color) !important;
 }
 
+.input::placeholder {
+  color: var(--medium-gray-color);
+}
+
 .input::-webkit-input-placeholder {
   color: var(--medium-gray-color);
 }
@@ -72,9 +76,6 @@
   color: var(--medium-gray-color);
 }
 
-.input::placeholder {
-  color: var(--medium-gray-color);
-}
 
 .inputWrapper > textarea {
   resize: none;
