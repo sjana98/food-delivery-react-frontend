@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from "./home.module.css";
 import Hero from '../hero/Hero';
-import Foods from '../foods/Foods';
+import FoodsforHome from '../FoodsforHome/FoodsforHome';
 import illustration1 from "../../assets/male-delivery-guy-riding-scooter.svg";
 import illustration2 from "../../assets/delivery-location.svg";
 import illustration3 from "../../assets/deliveryman-with-pizza.svg";
@@ -35,7 +35,7 @@ function Home() {
             </div>
           </div>
           {/* hero section end*/}
-          <Foods />
+          <FoodsforHome />
           <Newsletter />
         </div>
       </div>

@@ -1,9 +1,9 @@
 import React from 'react';
-import classes from "./foods.module.css";
+import classes from "./foodsforHome.module.css";
 import { Link } from "react-router-dom";
 import { foodTypes } from '../../data/data';
 
-function Foods() {
+function FoodsforHome() {
   return (
     <>
       <section id='foods' className={classes.container}>
@@ -28,4 +28,4 @@ function Foods() {
   )
 }
 
-export default Foods
+export default FoodsforHome
