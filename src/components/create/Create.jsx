@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import classes from "./create.module.css";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import axios from "axios";
@@ -15,6 +15,14 @@ function Create() {
 
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const auth = localStorage.getItem("user");
+    const admin = auth ? JSON.parse(auth).isAdmin : false;
+    if (admin === false) {
+      navigate("/");
+    };
+  });
 
   const validation = () => {   
     const error = {};

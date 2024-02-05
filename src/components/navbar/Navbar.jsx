@@ -11,6 +11,7 @@ function Navbar() {
 
   const navigate = useNavigate();
   const auth = localStorage.getItem("user");
+  const admin = auth ? JSON.parse(auth).isAdmin : false;
 
   useEffect(() => {
     window.onscroll = () => {
@@ -54,13 +55,14 @@ function Navbar() {
               </ul>
             </div>
           }
-          
+
           {auth &&
             <div className={classes.right}>
-              <div className={classes.createBtn}>
-                <button><Link to="/create">Create</Link></button>
-              </div>
-
+              {admin &&
+                 <div className={classes.createBtn}>
+                 <button><Link to="/create">Create</Link></button>
+               </div>
+              }
               <div className={classes.displayUser}>
                 <AiOutlineUser className={classes.userIcon} />
                 <p>{JSON.parse(auth).username}</p>
