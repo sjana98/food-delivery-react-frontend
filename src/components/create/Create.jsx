@@ -96,7 +96,8 @@ function Create() {
       };
 
       // product upload
-      // Convert category to lowercase
+      // Convert cases
+      const UppercaseTitle = title.toUpperCase();
       const lowercaseCategory = category.toLowerCase();
       
       const productPostApi = "http://localhost:5000/product";
@@ -106,7 +107,7 @@ function Create() {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${JSON.parse(localStorage.getItem("token"))}`
         },
-        data: { title, description, category:lowercaseCategory, img:fileName, price },
+        data: { title:UppercaseTitle, description, category:lowercaseCategory, img:fileName, price },
       };
       let responseData = await axios(productPostApi, createRequest2);
       responseData = responseData.data;
