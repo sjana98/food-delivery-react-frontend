@@ -24,11 +24,17 @@
   align-items: center;
 }
 
-.title,
-.noQuantity {
+.title {
+  text-transform: capitalize;
   color: var(--morelighter-red-color);
   font-size: 2rem;
   margin-bottom: 3rem;
+}
+
+.noQuantity {
+  color: var(--morelighter-red-color);
+  font-weight: 300;
+  font-size: 1.4rem;
 }
 
 .foods {
@@ -137,7 +143,7 @@
   }
 
   .foodTitle {
-    font-size: 0.8125rem;
+    font-size: 0.6rem;
     margin-bottom: 12px;
   }
 
@@ -155,7 +161,7 @@
 @media all and (max-width: 376px) {
   .title,
   .noQuantity {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
   }
 
   .ImgContainer {
@@ -172,7 +178,7 @@
   }
 
   .foodTitle {
-    font-size: 0.5rem;
+    font-size: 0.4rem;
     margin-bottom: 9px;
   }
 

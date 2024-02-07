@@ -38,9 +38,9 @@ function FoodCatalog() {
     <>
       <div className={classes.container}>
         <div className={classes.wrapper}>
-          {(filteredFoods.length !== 0 && !errorMsg) && <h2 className={classes.title}>Best {foodEndPoint}s for you</h2>}
-          {(filteredFoods.length === 0 && !errorMsg) && <h2 className={classes.noQuantity}>Currently {foodEndPoint} is unavailible!</h2>}
-          {errorMsg && <h3>Some thing went wrong. Please try again later!!</h3>}
+          {(filteredFoods.length !== 0 && !errorMsg) && <h2 className={classes.title}>The best {foodEndPoint} for you</h2>}
+          {(filteredFoods.length === 0 && !errorMsg) && <h2 className={classes.noQuantity}>Sorry, currently {foodEndPoint} is not availible for order!</h2>}
+          {errorMsg && <h3 className={classes.noQuantity}>Some thing went wrong. Please try again later!!</h3>}
 
           <div className={classes.foods}>
             {filteredFoods.length !== 0 &&
