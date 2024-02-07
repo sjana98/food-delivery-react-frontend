@@ -9,7 +9,8 @@ function FoodCatalog() {
   const location = useLocation();
   const foodEndPoint = location.pathname.split("/")[2];
 
-  const [errorMsg, setErrorMsg] = useState(false);
+  const [serverErrorMsg, setServerErrorMsg] = useState(false);
+  const [noQuantityMsgDelay, setNoQuantityMsgDelay] = useState(false);
 
   useEffect(() => {
     const fetchFoodType = async () => {
@@ -24,7 +25,7 @@ function FoodCatalog() {
 
       } catch (error) {
         if (error.request) {
-          setErrorMsg(true);
+          setServerErrorMsg(true);
         };
 
       };
@@ -33,14 +34,21 @@ function FoodCatalog() {
     fetchFoodType();
   }, [foodEndPoint]);
 
+  
+  if (filteredFoods.length === 0 && !serverErrorMsg) {
+    setTimeout(() => {
+      setNoQuantityMsgDelay(true);
+    }, 500);
+  };
+
 
   return (
     <>
       <div className={classes.container}>
         <div className={classes.wrapper}>
-          {(filteredFoods.length !== 0 && !errorMsg) && <h2 className={classes.title}>The best {foodEndPoint} for you</h2>}
-          {(filteredFoods.length === 0 && !errorMsg) && <h2 className={classes.noQuantity}>Sorry, currently {foodEndPoint} is not availible for order!</h2>}
-          {errorMsg && <h3 className={classes.noQuantity}>Some thing went wrong. Please try again later!!</h3>}
+          {(filteredFoods.length !== 0 && !serverErrorMsg) && <h2 className={classes.title}>The best {foodEndPoint} for you</h2>}
+          {(filteredFoods.length === 0 && !serverErrorMsg && noQuantityMsgDelay) && <h2 className={classes.noQuantity}>Sorry, currently {foodEndPoint} is not availible for order!</h2>}
+          {serverErrorMsg && <h3 className={classes.noQuantity}>Some thing went wrong. Please try again later!!</h3>}
 
           <div className={classes.foods}>
             {filteredFoods.length !== 0 &&
