@@ -6,7 +6,7 @@ import { foodTypes } from '../../data/data';
 function FoodsforHome() {
   return (
     <>
-      <section id='foods' className={classes.container}>
+      <section id='foodsforHome' className={classes.container}>
         <div className={classes.wrapper}>
           <span className={classes.subtitle}>What we offer!</span>
           <h2 className={classes.title}>Home kitchen crafts perfect meals for you</h2>

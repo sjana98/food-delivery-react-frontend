@@ -41,6 +41,7 @@
   color: var(--red-color);
   font-weight: bold;
   font-size: 1.75rem;
+  cursor: pointer;
 }
 .logo > span {
   color: var(--orange-color);
