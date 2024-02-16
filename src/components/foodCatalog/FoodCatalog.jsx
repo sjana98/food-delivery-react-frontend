@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import classes from "./foodCatalog.module.css";
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
-import { AiOutlineShoppingCart } from "react-icons/ai";
+import { AiOutlineShoppingCart, AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
 import { addProduct } from "../../reduxToolkit/cartSlice";
 import { useDispatch } from "react-redux";
 
@@ -96,9 +96,9 @@ function FoodCatalog() {
 
                     <div className={classes.foodQuantity}>
                       <span>Quantity:</span>
-                      <button disabled={quantity[fd._id] === 1} onClick={()=>quantityHandle([fd._id],"dec")} className={classes.quentityBtn}>-</button>
+                      <button disabled={quantity[fd._id] === 1} onClick={()=>quantityHandle([fd._id],"dec")} className={classes.quentityBtn}><AiOutlineMinusCircle/></button>
                       <span className={classes.quantityNum}>{quantity[fd._id]}</span>
-                      <button onClick={()=>quantityHandle([fd._id],"inc")} className={classes.quentityBtn}>+</button> 
+                      <button onClick={()=>quantityHandle([fd._id],"inc")} className={classes.quentityBtn}><AiOutlinePlusCircle/></button> 
                     </div>
 
                     <p className={classes.foodPrice}><span>Price:</span> ₹ {fd.price}/-</p>
