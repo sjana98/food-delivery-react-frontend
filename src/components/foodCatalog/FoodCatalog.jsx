@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import classes from "./foodCatalog.module.css";
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import { addProduct } from "../../reduxToolkit/cartSlice";
+import { useDispatch } from "react-redux";
 
 function FoodCatalog() {
   const [filteredFoods, setFilteredFoods] = useState([]);
@@ -11,6 +13,9 @@ function FoodCatalog() {
 
   const [serverErrorMsg, setServerErrorMsg] = useState(false);
   const [noQuantityMsgDelay, setNoQuantityMsgDelay] = useState(false);
+  const [quantity, setQuantity] = useState({});
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchFoodType = async () => {
@@ -22,6 +27,12 @@ function FoodCatalog() {
         let respData = await axios(apiUrl, createRequest);
         respData = respData.data;
         setFilteredFoods(respData);
+
+        const initialQuantity = {};  // set intial quantity 1 of all products
+        respData.forEach((food) => {
+          initialQuantity[food._id] = 1;
+          setQuantity(initialQuantity);
+        });
 
       } catch (error) {
         if (error.request) {
@@ -38,7 +49,24 @@ function FoodCatalog() {
   if (filteredFoods.length === 0 && !serverErrorMsg) {
     setTimeout(() => {
       setNoQuantityMsgDelay(true);
-    }, 500);
+    }, 700);
+  };
+
+  const quantityHandle = (foodId, command) => {   // Handle quantity of products individually. 
+    const currentQuantity = quantity[foodId];
+    const updatedQuantity = { ...quantity };
+    if (command === "dec" && currentQuantity > 1) {
+      updatedQuantity[foodId] = currentQuantity - 1;
+    } else if (command === "inc") {
+      updatedQuantity[foodId] = currentQuantity + 1;
+    };
+    setQuantity(updatedQuantity);
+  };
+
+  const cartHandle = (foodId) => {
+    const selectedProduct = filteredFoods.find((food)=>food._id === foodId);
+    const productWithQuantity = { ...selectedProduct, quantity: quantity[foodId] };
+    dispatch(addProduct(productWithQuantity));
   };
 
 
@@ -61,10 +89,21 @@ function FoodCatalog() {
 
                   <div className={classes.foodDetails}>
                     <h4 className={classes.foodTitle}>{fd.title}</h4>
-                    <div className={classes.foodContent}>
-                      <span className={classes.foodPrice}>₹ {fd.price}</span>
-                      <button type='Submit' className={classes.viewBtn}><Link to={`/food/${fd._id}`}>View</Link></button>
+
+                    <p className={classes.foodDescription}><span>Description:</span> { fd.description.slice(0, 115)} </p>
+
+                    <p className={classes.foodCategory}><span>Category:</span> {fd.category}</p>
+
+                    <div className={classes.foodQuantity}>
+                      <span>Quantity:</span>
+                      <button disabled={quantity[fd._id] === 1} onClick={()=>quantityHandle([fd._id],"dec")} className={classes.quentityBtn}>-</button>
+                      <span className={classes.quantityNum}>{quantity[fd._id]}</span>
+                      <button onClick={()=>quantityHandle([fd._id],"inc")} className={classes.quentityBtn}>+</button> 
                     </div>
+
+                    <p className={classes.foodPrice}><span>Price:</span> ₹ {fd.price}/-</p>
+
+                    <button onClick={() => cartHandle(fd._id)} className={classes.cartBtn}>add to cart <AiOutlineShoppingCart className={classes.cartIcon} /></button>
                   </div>
 
                 </div>
