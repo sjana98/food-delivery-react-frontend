@@ -151,11 +151,13 @@
 }
 
 .cartIcon {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
+  cursor: pointer;
 }
 
 .userIcon {
   font-size: 1rem;
+  cursor: pointer;
 }
 
 .cartQuantity {
@@ -164,8 +166,8 @@
   right: 10px;
   background-color: var(--red-color);
   color: var(--light-yellow-color);
-  height: 18px;
-  width: 18px;
+  height: 19px;
+  width: 19px;
   border-radius: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -176,8 +178,9 @@
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  font-size: 0.8rem;
-  opacity: 0.9;
+  font-size: 0.6rem;
+  border: 3px solid var(--nav-bg-color);
+  cursor: pointer;
 }
 
 .displayUser{
@@ -193,6 +196,7 @@
   font-weight: 500;
   color: var(--red-color);
   margin-bottom: 5px;
+  cursor: pointer;
 }
 
 .logout,.authBtn {
@@ -232,17 +236,15 @@
 
   .userIcon,
   .cartIcon {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
 
   .cartQuantity {
-    height: 15px;
-    width: 15px;
-    font-size: 0.7rem;
+    font-size: 0.55rem;
   }
 
   .logout, .authBtn {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     margin-left: -0.3rem;
   }
 

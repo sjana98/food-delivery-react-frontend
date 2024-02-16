@@ -29,8 +29,10 @@ body {
   --yellow-color:#e4cb2e;
   --orange-color:#ffae00;
   --light-gray-color: #d3c5c5;
+  --morelight-gray-color: #e5dfdf;
   --medium-gray-color: #888;
   --dark-gray-color: #444;
+  --moredark-gray-color: #313030;
 }
 
 /* Common CSS */

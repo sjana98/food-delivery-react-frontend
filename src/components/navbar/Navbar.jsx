@@ -3,11 +3,15 @@ import classes from "./navbar.module.css";
 import { Link, NavLink } from 'react-router-dom';
 import { AiOutlineUser, AiOutlineShoppingCart } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from 'react-redux';
 
 
 
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const cartItems = useSelector((state) => state.cart.products);
+  const totalQuantity = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+  
 
   const navigate = useNavigate();
   const auth = localStorage.getItem("user");
@@ -43,9 +47,9 @@ function Navbar() {
                 <li className={classes.listItem}>
                   <NavLink to="/">Home</NavLink>
                 </li>
-                <li className={classes.listItem}>
+                {/* <li className={classes.listItem}>
                   <NavLink to="/foods">Foods</NavLink>
-                </li>
+                </li> */}
                 <li className={classes.listItem}>
                   <NavLink to="/about">About</NavLink>
                 </li>
@@ -70,7 +74,7 @@ function Navbar() {
 
               <Link to="/cart" className={classes.cartContainer}>
                 <AiOutlineShoppingCart className={classes.cartIcon} />
-                <div className={classes.cartQuantity}>0</div>
+                <div className={classes.cartQuantity}>{totalQuantity}</div>
               </Link>
 
               <button onClick={handleLogout} className={classes.logout}>Logout</button>
