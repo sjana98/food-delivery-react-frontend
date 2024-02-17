@@ -7,6 +7,7 @@ import { addProduct } from "../../reduxToolkit/cartSlice";
 import { useDispatch } from "react-redux";
 
 function FoodCatalog() {
+  const [loader, setLoader] = useState(true);
   const [filteredFoods, setFilteredFoods] = useState([]);
   const location = useLocation();
   const foodEndPoint = location.pathname.split("/")[2];
@@ -33,11 +34,13 @@ function FoodCatalog() {
           initialQuantity[food._id] = 1;
           setQuantity(initialQuantity);
         });
+        setLoader(false);
 
       } catch (error) {
         if (error.request) {
           setServerErrorMsg(true);
         };
+        setLoader(false);
 
       };
 
@@ -46,11 +49,18 @@ function FoodCatalog() {
   }, [foodEndPoint]);
 
   
-  if (filteredFoods.length === 0 && !serverErrorMsg) {
-    setTimeout(() => {
-      setNoQuantityMsgDelay(true);
-    }, 700);
-  };
+  useEffect(() => {
+    if (filteredFoods.length === 0 && !serverErrorMsg) {
+      const timeOut = setTimeout(() => {
+        setNoQuantityMsgDelay(true);
+      }, 700);
+
+      return () => {
+        clearTimeout(timeOut);
+      };
+    };
+  }, [filteredFoods, serverErrorMsg]);
+  
 
   const quantityHandle = (foodId, command) => {   // Handle quantity of products individually. 
     const currentQuantity = quantity[foodId];
@@ -74,9 +84,11 @@ function FoodCatalog() {
     <>
       <div className={classes.container}>
         <div className={classes.wrapper}>
+          {loader && <div className={classes.loader}></div>}
+
           {(filteredFoods.length !== 0 && !serverErrorMsg) && <h2 className={classes.title}>The best {foodEndPoint} for you</h2>}
           {(filteredFoods.length === 0 && !serverErrorMsg && noQuantityMsgDelay) && <h2 className={classes.noQuantity}>Sorry, currently {foodEndPoint} is not availible for order!</h2>}
-          {serverErrorMsg && <h3 className={classes.noQuantity}>Some thing went wrong. Please try again later!!</h3>}
+          {(serverErrorMsg && !loader) && <h3 className={classes.noQuantity}>Some thing went wrong. Please try again later!!</h3>}
 
           <div className={classes.foods}>
             {filteredFoods.length !== 0 &&
