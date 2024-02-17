@@ -34,14 +34,15 @@ function FoodCatalog() {
           initialQuantity[food._id] = 1;
           setQuantity(initialQuantity);
         });
-        setLoader(false);
 
       } catch (error) {
         if (error.request) {
           setServerErrorMsg(true);
         };
+        
+      } finally {
         setLoader(false);
-
+        
       };
 
     };
