@@ -47,9 +47,9 @@ function Navbar() {
                 <li className={classes.listItem}>
                   <NavLink to="/">Home</NavLink>
                 </li>
-                {/* <li className={classes.listItem}>
-                  <NavLink to="/foods">Foods</NavLink>
-                </li> */}
+                <li className={classes.listItem}>
+                  <NavLink to="/foodItems">Foods</NavLink>
+                </li>
                 <li className={classes.listItem}>
                   <NavLink to="/about">About</NavLink>
                 </li>

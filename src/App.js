@@ -6,7 +6,7 @@ import Footer from "./components/footer/Footer";
 import Login from "./components/login/Login";
 import Signup from "./components/signup/Signup";
 import Create from "./components/create/Create";
-import FoodDetails from "./components/foodDetails/FoodDetails";
+import FoodItems from "./components/foodItems/FoodItems";
 import FoodCatalog from "./components/foodCatalog/FoodCatalog";
 import Cart from "./components/cart/Cart";
 import Checkout from "./components/checkout/Checkout";
@@ -32,7 +32,7 @@ function App() {
         <Route element={<RoutesControll />}>
           <Route path="/" element={<Home />} />
           <Route path="/create" element={<Create />} />
-          <Route path="/food/:id" element={<FoodDetails />} />
+          <Route path="/foodItems" element={<FoodItems />} />
           <Route path="/foods/:name" element={<FoodCatalog />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
