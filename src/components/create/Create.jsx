@@ -96,9 +96,8 @@ function Create() {
       };
 
       // product upload
-      // Convert cases
-      const UppercaseTitle = title.toUpperCase();
-      const lowercaseCategory = category.toLowerCase();
+      const UppercaseTitle = title.toUpperCase();   // Convert cases
+      const lowercaseCategory = category.toLowerCase();  // Convert cases
       
       const productPostApi = "http://localhost:5000/product";
       const createRequest2 = {
@@ -111,12 +110,10 @@ function Create() {
       };
       let responseData = await axios(productPostApi, createRequest2);
       responseData = responseData.data;
-      navigate(`/food/${responseData._id}`);
+      navigate(`/foods/${responseData.category}`);
 
     } catch (error) {
-      if (error.response) {
-        alert("You are not an admin!!");
-      } else if(error.request){
+      if(error.request){
         alert("Something went wrong. Try again later!!");
       } else {
         console.error('Error during request setup:', error.message);
