@@ -41,17 +41,17 @@ function FoodCatalog() {
         if (error.request) {
           setServerErrorMsg(true);
         };
-        
+
       } finally {
         setLoader(false);
-        
+
       };
 
     };
     fetchFoodType();
   }, [foodEndPoint]);
 
-  
+
   useEffect(() => {          // Delay product unavaillablity message 
     if (filteredFoods.length === 0 && !serverErrorMsg) {
       const timeOut = setTimeout(() => {
@@ -63,7 +63,7 @@ function FoodCatalog() {
       };
     };
   }, [filteredFoods, serverErrorMsg]);
-  
+
 
   const quantityHandle = (foodId, command) => {   // Handle quantity of products individually. 
     const currentQuantity = quantity[foodId];
@@ -77,7 +77,7 @@ function FoodCatalog() {
   };
 
   const cartHandle = (foodId) => {      // Handle product with quantity add to cart.
-    const selectedProduct = filteredFoods.find((food)=>food._id === foodId);
+    const selectedProduct = filteredFoods.find((food) => food._id === foodId);
     const productWithQuantity = { ...selectedProduct, quantity: quantity[foodId] };
     dispatch(addProduct(productWithQuantity));
     toast.success(`${quantity[foodId]} ${selectedProduct.title} is added to cart.`);
@@ -94,37 +94,35 @@ function FoodCatalog() {
           {(filteredFoods.length === 0 && !serverErrorMsg && noQuantityMsgDelay) && <h2 className={classes.noQuantity}>Sorry, currently {foodEndPoint} is not availible for order!</h2>}
           {(serverErrorMsg && !loader) && <h3 className={classes.noQuantity}>Some thing went wrong. Please try again later!!</h3>}
 
-          <div className={classes.foods}>
-            {filteredFoods.length !== 0 &&
-              filteredFoods.map((fd) => (
-                <div className={classes.foodInner} key={fd._id}>
+          {filteredFoods.length !== 0 &&
+            filteredFoods.map((fd) => (
+              <div className={classes.foodInner} key={fd._id}>
 
-                  <div className={classes.ImgContainer}>
-                    <img src={`http://localhost:5000/images/${fd.img}`} alt="food_img" className={classes.foodImg} />
-                  </div>
-
-                  <div className={classes.foodDetails}>
-                    <h4 className={classes.foodTitle}>{fd.title}</h4>
-
-                    <p className={classes.foodDescription}><span>Description:</span> { fd.description.slice(0, 115)} </p>
-
-                    <p className={classes.foodCategory}><span>Category:</span> {fd.category}</p>
-
-                    <div className={classes.foodQuantity}>
-                      <span>Quantity:</span>
-                      <button disabled={quantity[fd._id] === 1} onClick={()=>quantityHandle([fd._id],"dec")} className={classes.quentityBtn}><AiOutlineMinusCircle/></button>
-                      <span className={classes.quantityNum}>{quantity[fd._id]}</span>
-                      <button onClick={()=>quantityHandle([fd._id],"inc")} className={classes.quentityBtn}><AiOutlinePlusCircle/></button> 
-                    </div>
-
-                    <p className={classes.foodPrice}><span>Price:</span> ₹ {fd.price}/-</p>
-
-                    <button onClick={() => cartHandle(fd._id)} className={classes.cartBtn}>add to cart <AiOutlineShoppingCart className={classes.cartIcon} /></button>
-                  </div>
-
+                <div className={classes.ImgContainer}>
+                  <img src={`http://localhost:5000/images/${fd.img}`} alt="food_img" className={classes.foodImg} />
                 </div>
-              ))}
-          </div>
+
+                <div className={classes.foodDetails}>
+                  <h4 className={classes.foodTitle}>{fd.title}</h4>
+
+                  <p className={classes.foodDescription}><span>Description:</span> {fd.description.slice(0, 115)} </p>
+
+                  <p className={classes.foodCategory}><span>Category:</span> {fd.category}</p>
+
+                  <div className={classes.foodQuantity}>
+                    <span>Quantity:</span>
+                    <button disabled={quantity[fd._id] === 1} onClick={() => quantityHandle([fd._id], "dec")} className={classes.quentityBtn}><AiOutlineMinusCircle /></button>
+                    <span className={classes.quantityNum}>{quantity[fd._id]}</span>
+                    <button onClick={() => quantityHandle([fd._id], "inc")} className={classes.quentityBtn}><AiOutlinePlusCircle /></button>
+                  </div>
+
+                  <p className={classes.foodPrice}><span>Price:</span> ₹ {fd.price}/-</p>
+
+                  <button onClick={() => cartHandle(fd._id)} className={classes.cartBtn}>add to cart <AiOutlineShoppingCart className={classes.cartIcon} /></button>
+                </div>
+
+              </div>
+            ))}
         </div>
       </div>
     </>
