@@ -1,0 +1,96 @@
+.container {
+  height: 100%;
+  width: 100%;
+  margin-top: 6rem;
+  margin-bottom: 10rem;
+}
+
+.wrapper {
+  width: 85%;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+
+.title {
+  text-transform: capitalize;
+  color: var(--morelighter-red-color);
+  font-size: 2rem;
+  margin-bottom: 3rem;
+}
+
+.noQuantity {
+  color: var(--morelighter-red-color);
+  font-weight: 300;
+  font-size: 1.4rem;
+}
+
+.mappingFoods {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  background-color: var(--transparentLight-gray-color);
+  width: 75%;
+  padding: 15px 15px 15px 30px;
+  border-bottom: 1px dashed var(--dark-gray-color);
+}
+
+.foodInner {
+  display: flex;
+  margin: 8px;
+}
+
+.imgWrapper {
+  width: 5rem;
+  height: 5rem;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-right: 25px;
+}
+
+.imgWrapper > img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  transition: all 250ms ease-in-out;
+}
+
+.detailsWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+.foodTitle {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--dark-gray-color);
+    margin-bottom: 3px;
+}
+
+.qtiesWithRemove{
+    width: 80px;
+    font-size: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.foodWithQuanity{
+    display: flex;
+    align-items: center;
+}
+
+.crossSign{
+    margin: 0 2px;
+}
+
+.removeBtn{
+    color: var(--red-color);
+    cursor: pointer;
+    height: 11px;
+    width: 11px;
+}
