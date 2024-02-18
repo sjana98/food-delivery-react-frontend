@@ -3,6 +3,7 @@ import classes from "./create.module.css";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 
 function Create() {
@@ -110,11 +111,12 @@ function Create() {
       };
       let responseData = await axios(productPostApi, createRequest2);
       responseData = responseData.data;
+      toast.success("New product has been created successfully!!");
       navigate(`/foods/${responseData.category}`);
 
     } catch (error) {
       if(error.request){
-        alert("Something went wrong. Try again later!!");
+        toast.error("Something went wrong. Try again later!!");
       } else {
         console.error('Error during request setup:', error.message);
       };

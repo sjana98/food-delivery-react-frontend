@@ -3,6 +3,8 @@ import classes from "./loginPassword.module.css";
 import { LiaEyeSolid, LiaEyeSlashSolid } from "react-icons/lia";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+
 
 function LoginPassword() {
 
@@ -50,18 +52,21 @@ function LoginPassword() {
       };
       const resultData = await axios(passwordUpdateAPI, createRequest);
       if (resultData) {
-        alert('Password has been updated successfully!');
+        toast.success('Password has been updated successfully!');
         navigate("/login");
       };
 
     } catch (error) {
       if (error.response) {
         setWrongCredentials(true);
-        setTimeout(() => {
+        const timeOut = setTimeout(() => {
         setWrongCredentials(false);
-        }, 5000);
+        }, 3000);
+        return () => {
+          clearTimeout(timeOut);
+        };
       } else if (error.request) {
-        alert("Something went wrong. Try again later!!");
+        toast.error("Something went wrong. Try again later!!");
       } else {
         console.log('Error', error.message);
       };

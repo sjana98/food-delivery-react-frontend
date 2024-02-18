@@ -5,6 +5,8 @@ import axios from 'axios';
 import { AiOutlineShoppingCart, AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
 import { addProduct } from "../../reduxToolkit/cartSlice";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+
 
 function FoodCatalog() {
   const [loader, setLoader] = useState(true);
@@ -50,7 +52,7 @@ function FoodCatalog() {
   }, [foodEndPoint]);
 
   
-  useEffect(() => {
+  useEffect(() => {          // Delay product unavaillablity message 
     if (filteredFoods.length === 0 && !serverErrorMsg) {
       const timeOut = setTimeout(() => {
         setNoQuantityMsgDelay(true);
@@ -74,10 +76,11 @@ function FoodCatalog() {
     setQuantity(updatedQuantity);
   };
 
-  const cartHandle = (foodId) => {
+  const cartHandle = (foodId) => {      // Handle product with quantity add to cart.
     const selectedProduct = filteredFoods.find((food)=>food._id === foodId);
     const productWithQuantity = { ...selectedProduct, quantity: quantity[foodId] };
     dispatch(addProduct(productWithQuantity));
+    toast.success(`${quantity[foodId]} ${selectedProduct.title} is added to cart.`);
   };
 
 

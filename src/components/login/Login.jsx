@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import womaneating from "../../assets/womaneating.jpg";
 import { LiaEyeSolid, LiaEyeSlashSolid } from "react-icons/lia";
+import { PiHandsPraying } from "react-icons/pi";
+import { toast } from "react-toastify";
 
 
 function Login() {
@@ -63,17 +65,21 @@ function Login() {
       if (resultData.Token) {                      // Store jwt token and user details in browser local storage
         localStorage.setItem("user", JSON.stringify(resultData.userExist));
         localStorage.setItem("token", JSON.stringify(resultData.Token));
+        toast.info("Welcome back to HappyfooD!", {icon: <PiHandsPraying />});
         navigate("/");
       };
       
     } catch (error) {
       if (error.response) {
         setWrongCredentials(true);
-        setTimeout(() => {
+        const timeOut = setTimeout(() => {
           setWrongCredentials(false);
-        }, 4000);
+        }, 3000);
+        return () => {
+          clearTimeout(timeOut);
+        };
       } else if(error.request){
-        alert("Something went wrong. Try again later!!");
+        toast.error("Something went wrong. Try again later!!");
       } else {
         console.error('Error during request setup:', error.message);
       };
