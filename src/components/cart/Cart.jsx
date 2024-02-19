@@ -3,6 +3,7 @@ import classes from "./cart.module.css";
 import { useSelector } from 'react-redux';
 import { RxCross2 } from "react-icons/rx";
 import { AiOutlineDelete } from "react-icons/ai";
+import emptyCart from "../../assets/empty_cart.png";
 
 function Cart() {
   const cartFoods = useSelector((item) => item.cart.products);
@@ -12,6 +13,7 @@ function Cart() {
 
   return (
     <>
+      {/* Cart product mapping section*/}
       <div className={classes.container}>
         <div className={classes.wrapper}>
           <h2 className={classes.title}>Cart Items</h2>
@@ -19,28 +21,41 @@ function Cart() {
             {cartFoods.length > 0 &&
               cartFoods.map((fd) => (
                 <div className={classes.foodInner} key={fd._id}>
-                    <div className={classes.imgWrapper}>
-                      <img src={`http://localhost:5000/images/${fd.img}`} alt="food_img" className={classes.foodImg} />
-                    </div>
+                  
+                  <div className={classes.imgWrapper}>
+                    <img src={`http://localhost:5000/images/${fd.img}`} alt="food_img" className={classes.foodImg} />
+                  </div>
 
-                    <div className={classes.detailsWrapper}>
-                      <h4 className={classes.foodTitle}>{fd.title}</h4>
-                      <div className={classes.qtiesWithRemove}>
-                        <p className={classes.foodWithQuanity}> {fd.quantity} <RxCross2 className={classes.crossSign}/> ₹{fd.price}</p>
-                        <button><AiOutlineDelete  className={classes.removeBtn}/></button>
+                  <div className={classes.detailsWrapper}>
+                    <div className={classes.TitleAndQuanWrapper}>
+                      <div>
+                        <h4 className={classes.foodTitle}>{fd.title}</h4>
+                        <p className={classes.foodCategory}>{fd.category}</p>
                       </div>
+                      <div className={classes.foodWithQuanity}> {fd.quantity} <RxCross2 className={classes.crossIcon} /> ₹{fd.price}</div>
                     </div>
+                    <button className={classes.removeBtn}><AiOutlineDelete className={classes.removeIcon} /></button>
+                  </div>
+
+                  <div className={classes.cartStyle}></div>
+                  <div className={classes.cartStyle2}></div>
                 </div>
               ))
             }
-            {cartFoods.length < 0 && <h3 className={classes.noQuantity}>Your cart is empty. Add first and buy!!</h3>}
-
-            <div className={classes.Calculation}>
-              <p className={classes.totalQuantity}>Total quantity: {totalQuantity} </p>
-              <p className={classes.totalPrice}>Total price: ₹{totalPriceWithQuantity} </p>
-              <button className={classes.buyBtn}>Order Now</button>
-            </div>
+            {cartFoods.length <= 0 && <h3 className={classes.noQuantity}>Your cart is empty. Add first, then buy!! <img src={emptyCart} alt="empty Cart" /></h3>}
           </div>
+
+          {/* Check out section  */}
+          {cartFoods.length > 0 &&
+            <div className={classes.cartCalculation}>
+              <div className={classes.cartWrapper}>
+                <h5 className={classes.cartTotal}>Cart Total</h5>
+                <p className={classes.totalQuantity}>Total quantity : <span>{totalQuantity} </span></p>
+                <p className={classes.totalPrice}>Total price : <span>₹{totalPriceWithQuantity}</span> </p>
+              </div>
+              <button className={classes.CheckoutBtn}>Proceed to Checkout</button>
+            </div>
+          }
         </div>
       </div>
     </>
