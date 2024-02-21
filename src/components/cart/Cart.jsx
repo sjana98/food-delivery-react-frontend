@@ -56,13 +56,22 @@ function Cart() {
 
           {/* Check out section  */}
           {cartFoods.length > 0 &&
-            <div className={classes.cartCalculation}>
-              <div className={classes.cartWrapper}>
-                <h5 className={classes.cartTotal}>Cart Total</h5>
-                <p className={classes.totalQuantity}>Total quantity : <span>{productQuantity} </span></p>
-                <p className={classes.totalPrice}>Total price : <span>₹{totalPrice}</span> </p>
+            <div className={classes.checkoutContainer}>
+
+              <div className={classes.addressWrapper}>
+                <h5 className={classes.curAddress}>Address-</h5>
+                <textarea placeholder='Your current address...*' className={classes.input} />
               </div>
-              <button onClick={handleCheckout} disabled={cartFoods.length === 0} className={classes.CheckoutBtn}>Proceed to Checkout</button>
+
+              <div>
+                <div className={classes.cartWrapper}>
+                  <h5 className={classes.cartTotal}>Cart Total-</h5>
+                  <p className={classes.totalQuantity}>Total quantity : <span>{productQuantity} </span></p>
+                  <p className={classes.totalPrice}>Total price : <span>₹{totalPrice}</span> </p>
+                </div>
+                <button onClick={handleCheckout} disabled={cartFoods.length === 0} className={classes.CheckoutBtn}>Proceed to Checkout</button>
+              </div>
+
             </div>
           }
         </div>
