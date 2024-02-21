@@ -1,15 +1,24 @@
 import React from 'react';
 import classes from "./cart.module.css";
 import { useSelector } from 'react-redux';
+import { useNavigate } from "react-router-dom";
 import { RxCross2 } from "react-icons/rx";
 import { AiOutlineDelete } from "react-icons/ai";
 import emptyCart from "../../assets/empty_cart.png";
 
 function Cart() {
   const cartFoods = useSelector((item) => item.cart.products);
-  const totalQuantity = cartFoods.reduce((acc, item) => acc + item.quantity, 0);
-  const productsTotalPrice = cartFoods.reduce((acc, item) => acc + item.price, 0);
-  const totalPriceWithQuantity = totalQuantity * productsTotalPrice;
+  const productQuantity = cartFoods.reduce((acc, item) => acc + item.quantity, 0);
+  let totalPrice = 0;
+  cartFoods.map((food) => totalPrice += (food.quantity * food.price));
+
+  const navigate = useNavigate();
+
+  const handleCheckout = () => {
+    if (cartFoods.length > 0) {
+      navigate("/checkout");
+    };
+  };
 
   return (
     <>
@@ -50,10 +59,10 @@ function Cart() {
             <div className={classes.cartCalculation}>
               <div className={classes.cartWrapper}>
                 <h5 className={classes.cartTotal}>Cart Total</h5>
-                <p className={classes.totalQuantity}>Total quantity : <span>{totalQuantity} </span></p>
-                <p className={classes.totalPrice}>Total price : <span>₹{totalPriceWithQuantity}</span> </p>
+                <p className={classes.totalQuantity}>Total quantity : <span>{productQuantity} </span></p>
+                <p className={classes.totalPrice}>Total price : <span>₹{totalPrice}</span> </p>
               </div>
-              <button className={classes.CheckoutBtn}>Proceed to Checkout</button>
+              <button onClick={handleCheckout} disabled={cartFoods.length === 0} className={classes.CheckoutBtn}>Proceed to Checkout</button>
             </div>
           }
         </div>
