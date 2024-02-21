@@ -1,0 +1,26 @@
+.container{
+    height: calc(100vh - 60px);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper{
+    height: 50vh;
+    width: 50vh;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    line-height: 35px;
+}
+
+.title{
+    color: var(--green-color);
+}
+
+.deliveryPersonPng{
+    height: 10rem;
+    width: 10rem;
+    margin: 0 auto;
+}
