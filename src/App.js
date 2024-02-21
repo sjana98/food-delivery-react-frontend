@@ -1,18 +1,20 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
-import Home from "./components/home/Home";
 import Footer from "./components/footer/Footer";
-import Login from "./components/login/Login";
-import Signup from "./components/signup/Signup";
-import Create from "./components/create/Create";
-import FoodItems from "./components/foodItems/FoodItems";
-import FoodCatalog from "./components/foodCatalog/FoodCatalog";
-import Cart from "./components/cart/Cart";
-import Checkout from "./components/checkout/Checkout";
-import LoginPassword from "./components/loginPasswordChange/LoginPassword";
 import RoutesControll from "./components/RoutesControll/RoutesControll";
 import { useEffect } from "react";
+import React, { Suspense, lazy } from "react";
+const Login = lazy(() => import("./components/login/Login"));
+const LoginPassword = lazy(() => import("./components/loginPasswordChange/LoginPassword"));
+const Signup = lazy(() => import("./components/signup/Signup"));
+const Home = lazy(() => import("./components/home/Home"));
+const FoodItems = lazy(() => import("./components/foodItems/FoodItems"));
+const Create = lazy(() => import("./components/create/Create"));
+const FoodCatalog = lazy(() => import("./components/foodCatalog/FoodCatalog"));
+const Cart = lazy(() => import("./components/cart/Cart"));
+const Checkout = lazy(() => import("./components/checkout/Checkout"));
+
 
 function App() {
   const location = useLocation();
@@ -24,20 +26,22 @@ function App() {
   return (
     <div>
       <Navbar />
-      <Routes>
-        <Route path="/Login" element={<Login />} />
-        <Route path="/Signup" element={<Signup />} />
-        <Route path="/passwordChange" element={<LoginPassword />} />
+      <Suspense fallback={<h3>Page is loading...</h3>}>
+        <Routes>
+          <Route path="/Login" element={<Login />} />
+          <Route path="/Signup" element={<Signup />} />
+          <Route path="/passwordChange" element={<LoginPassword />} />
 
-        <Route element={<RoutesControll />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/create" element={<Create />} />
-          <Route path="/foodItems" element={<FoodItems />} />
-          <Route path="/foods/:name" element={<FoodCatalog />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<Checkout />} />
-        </Route>
-      </Routes>
+          <Route element={<RoutesControll />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/create" element={<Create />} />
+            <Route path="/foodItems" element={<FoodItems />} />
+            <Route path="/foods/:name" element={<FoodCatalog />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/checkout" element={<Checkout />} />
+          </Route>
+        </Routes>
+      </Suspense>
 
       <Footer />
     </div>
