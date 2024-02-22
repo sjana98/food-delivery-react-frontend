@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { RxCross2 } from "react-icons/rx";
 import { AiOutlineDelete } from "react-icons/ai";
+import { MdOutlineMyLocation } from "react-icons/md";
 import emptyCart from "../../assets/empty_cart.png";
 
 function Cart() {
@@ -60,7 +61,8 @@ function Cart() {
 
               <div className={classes.addressWrapper}>
                 <h5 className={classes.curAddress}>Address-</h5>
-                <textarea placeholder='Your current address...*' className={classes.input} />
+                <button className={classes.curAddressBtn}><MdOutlineMyLocation /> Your current address</button>
+                <p className={classes.addressDetail}>Your address must be show here!</p>
               </div>
 
               <div>
