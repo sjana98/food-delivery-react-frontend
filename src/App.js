@@ -5,6 +5,7 @@ import Footer from "./components/footer/Footer";
 import RoutesControll from "./components/RoutesControll/RoutesControll";
 import { useEffect } from "react";
 import React, { Suspense, lazy } from "react";
+import UserAccount from "./components/userAccount/UserAccount";
 const Login = lazy(() => import("./components/login/Login"));
 const LoginPassword = lazy(() => import("./components/loginPasswordChange/LoginPassword"));
 const Signup = lazy(() => import("./components/signup/Signup"));
@@ -38,6 +39,7 @@ function App() {
             <Route path="/foodItems" element={<FoodItems />} />
             <Route path="/foods/:name" element={<FoodCatalog />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/account" element={<UserAccount />} />
             <Route path="/checkout" element={<Checkout />} />
           </Route>
         </Routes>

@@ -31,6 +31,7 @@ function Navbar() {
     navigate("/login");
   };
 
+  
   return (
     <>
       <div className={`${classes.container} ${isScrolled && classes.onScroll}`}>
@@ -68,7 +69,7 @@ function Navbar() {
                 </div>
               }
               <div className={classes.displayUser}>
-                <AiOutlineUser className={classes.userIcon} />
+              <Link to="/account"><AiOutlineUser className={classes.userIcon} /></Link>
                 <p>{JSON.parse(auth).username}</p>
               </div>
 

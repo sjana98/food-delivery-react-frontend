@@ -50,3 +50,13 @@ li{
 a.active {
   color: var(--yellow-color) !important;
 } 
+
+body::-webkit-scrollbar {
+  width: 5px; 
+  background-color: var(--nav-bg-color);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--morelighter-red-color); 
+  border-radius: 5px;
+}

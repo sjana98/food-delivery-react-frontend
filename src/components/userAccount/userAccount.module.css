@@ -1,0 +1,176 @@
+.profileContainer {
+  height: 100%;
+  width: 100%;
+  margin-top: 6rem;
+  margin-bottom: 10rem;
+}
+
+.wrapper {
+  width: 85%;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: top;
+}
+
+/* user profile section */
+.userProfile {
+  width: 30%;
+  height: 18.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 0.625rem;
+  background-color: var(--morelight-gray-color);
+  border-radius: 5px;
+}
+
+.profilePicture {
+  width: 6.25rem;
+  height: 6.25rem;
+  border-radius: 50%;
+  margin-bottom: 1.5625rem;
+  object-fit: cover;
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 6.25rem;
+}
+
+.profileInfo h5 {
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  color: var(--dark-gray-color);
+}
+
+.profileInfo p {
+  font-size: 0.875rem;
+  color: var(--medium-gray-color);
+}
+
+.deleteButton {
+  background-color: var(--light-red-color);
+  color: var(--white-color);
+  border: none;
+  font-size: 0.6875rem;
+  padding: 0.375rem 0.5625rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 2.1875rem;
+}
+
+.deleteButton:hover {
+  background-color: var(--red-color);
+}
+
+/* Order summery section */
+.orderSummary {
+  width: 70%;
+  height: auto;
+  border: 1.5px solid var(--morelight-gray-color);
+  padding: 0.625rem;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.orderSummary h3 {
+  margin-bottom: 1rem;
+  color: var(--moredark-gray-color);
+  font-size: 1.0625rem;
+  text-decoration: underline;
+}
+
+.orderSummary li {
+  margin-bottom: 0.9375rem;
+  font-size: 0.6875rem;
+  color: var(--dark-gray-color);
+  z-index: 1;
+}
+
+.orderSummary .label {
+  font-weight: 700;
+  color: var(--moredark-gray-color);
+}
+
+.labelMsg {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--medium-gray-color);
+}
+
+.pizzaIcon {
+  position: absolute;
+  left: -18.75rem;
+  top: -6.25rem;
+  height: 31.25rem;
+  width: 62.5rem;
+  color: var(--red-color);
+  opacity: 0.1;
+}
+
+.burgerIcon {
+  position: absolute;
+  left: 25rem;
+  top: -4.375rem;
+  height: 21.875rem;
+  width: 21.875rem;
+  transform: rotate(30deg);
+  color: var(--orange-color);
+  opacity: 0.2;
+}
+
+/* Responsiveness css */
+/* tablet screen */
+@media all and (max-width: 769px) {
+  .pizzaIcon {
+    left: -18.75rem;
+    top: -6.25rem;
+    height: 31.25rem;
+    width: 56.25rem;
+  }
+
+  .burgerIcon {
+    left: 15.625rem;
+    top: -1.25rem;
+    height: 18.75rem;
+    width: 18.75rem;
+  }
+}
+
+/* mobile screen */
+@media all and (max-width: 376px) {
+  .wrapper {
+    width: 90%;
+    flex-direction: column;
+  }
+
+  .pizzaIcon {
+    height: 25rem;
+  }
+
+  .burgerIcon {
+    left: 9.375rem;
+    top: 1.25rem;
+    height: 12.5rem;
+    width: 12.5rem;
+  }
+
+  .orderSummary {
+    width: 100%;
+    height: auto;
+  }
+
+  .userProfile {
+    width: 100%;
+    height: 18.75rem;
+    margin-top: 2rem;
+  }
+}
