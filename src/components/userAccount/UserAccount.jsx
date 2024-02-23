@@ -1,24 +1,46 @@
 import React from 'react';
 import classes from './userAccount.module.css';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import userImg from "../../assets/user.png"
 import { CiPizza } from "react-icons/ci";
 import { GiHamburger } from "react-icons/gi";
 import { FaPizzaSlice } from "react-icons/fa";
+import axios from 'axios';
+import { toast } from "react-toastify";
+
 
 
 function UserAccount() {
     const [searchParams] = useSearchParams();
     const totalPrice = searchParams.get('totalPrice');
     const totalItem = searchParams.get("totalQuantity");
+
+    const navigate = useNavigate();
   
     const auth = localStorage.getItem("user");
 
-    const handleDeleteAccount = () => {
-        // Implement logic to handle account deletion
-        localStorage.clear();
-        // Redirect or display appropriate message
+    const handleDeleteAccount = async (id) => {
+        const confirmation = window.confirm("Are you sure you want to delete your account? This action cannot be undone.");
+        if (confirmation) {
+            try {
+                const apiUrl = `http://localhost:5000/auth/account-delete/${id}`;
+                const createRequest = {
+                    method: "DELETE",
+                    headers: { "Authorization": `Bearer ${JSON.parse(localStorage.getItem("token"))}` },
+                };
+                const result = await axios(apiUrl, createRequest);
+                if (result) {
+                    localStorage.clear();
+                    toast.info("Your account has been deleted successfully!!");
+                    navigate("/signup");
+                };
+
+            } catch (error) {
+                toast.error("Something went wrong.Try again!");
+            };
+        };
     };
+
 
 
     return (
@@ -49,7 +71,7 @@ function UserAccount() {
                     <div className={classes.profileInfo}>
                         <h5>{JSON.parse(auth).username}</h5>
                         <p>{JSON.parse(auth).email}</p>
-                        <button className={classes.deleteButton} onClick={handleDeleteAccount}> Delete Account </button>
+                        <button className={classes.deleteButton} onClick={()=>handleDeleteAccount(JSON.parse(auth)._id)}> Delete Account </button>
                     </div>
                 </div>
 
