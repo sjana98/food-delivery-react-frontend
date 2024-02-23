@@ -1,26 +1,15 @@
 .container {
   height: calc(100vh - 60px);
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
   margin-top: 6rem;
   margin-bottom: 3rem;
 }
 
 .wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
   flex-direction: column;
   padding: 1rem;
   border: 2px solid var(--morelighter-red-color);
@@ -38,7 +27,6 @@
 }
 
 .input {
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   width: 300px;
   display: block;
@@ -47,8 +35,6 @@
   padding: 7px;
   margin-top: 5px;
   font-size: 12px;
-  -webkit-transition: all 230ms ease-in-out;
-  -o-transition: all 230ms ease-in-out;
   transition: all 230ms ease-in-out;
 }
 
@@ -100,7 +86,6 @@ textarea:focus {
 
 .fileLabelInput > span {
   display: block;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   font-size: 9px;
   font-weight: 500;
@@ -121,7 +106,7 @@ textarea:focus {
 
 .imgContent {
   display: flex;
-  align-items: end;
+  align-items: flex-end;
 }
 
 .imageName {
@@ -160,8 +145,6 @@ textarea:focus {
   font-size: 16px;
   border: 1px solid transparent;
   width: 50%;
-  -webkit-transition: all 300ms ease-in-out;
-  -o-transition: all 300ms ease-in-out;
   transition: all 300ms ease-in-out;
 }
 
