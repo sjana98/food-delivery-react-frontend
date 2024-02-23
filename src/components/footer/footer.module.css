@@ -2,10 +2,62 @@
   width: 100%;
   height: 100%;
   background-color: var(--footer-bg-color);
+  position: relative;
+  overflow: hidden;
 }
+
+ /* Decoration area */
+.pizzaIcon1,.pizzaIcon2,.pizzaIcon3 {
+  position: absolute;
+  left: 50px;
+  top: 10px;
+  height: 135px;
+  width: 135px;
+  color: var(--red-color);
+  opacity: 0.2;
+}
+.pizzaIcon2 {
+  left: 1050px;
+  top: -20px;
+  color: var(--orange-color);
+}
+
+.pizzaIcon3 {
+  left: 500px;
+  top: 200px;
+  color: var(--red-color);
+}
+
+.burgerIcon1,.burgerIcon2,.burgerIcon3,.burgerIcon4 {
+  position: absolute;
+  left: 300px;
+  top: 60px;
+  height: 135px;
+  width: 135px;
+  color: var(--orange-color);
+  opacity: 0.2;
+}
+
+.burgerIcon2 {
+  left: 770px;
+  top: 100px;
+  color: var(--red-color);
+}
+
+.burgerIcon3 {
+  left: 100px;
+  top: 200px;
+}
+
+.burgerIcon4 {
+  left: 1000px;
+  top: 200px;
+}
+ /* Decoration area end*/
 
 .wrapper,
 .copyWrapper {
+  z-index: 1;
   width: 60%;
   height: 100%;
   padding-top: 4rem;
