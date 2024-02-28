@@ -6,8 +6,9 @@ import RoutesControll from "./components/RoutesControll/RoutesControll";
 import { useEffect } from "react";
 import React, { Suspense, lazy } from "react";
 import UserAccount from "./components/userAccount/UserAccount";
+import Cooking from "./components/loadingPage/Cooking";
 const Login = lazy(() => import("./components/login/Login"));
-const LoginPassword = lazy(() => import("./components/loginPasswordChange/LoginPassword"));
+const LoginPassword = lazy(() => import("./components/loginPasswordChange/LoginPassword")); 
 const Signup = lazy(() => import("./components/signup/Signup"));
 const Home = lazy(() => import("./components/home/Home"));
 const FoodItems = lazy(() => import("./components/foodItems/FoodItems"));
@@ -15,7 +16,6 @@ const Create = lazy(() => import("./components/create/Create"));
 const FoodCatalog = lazy(() => import("./components/foodCatalog/FoodCatalog"));
 const Cart = lazy(() => import("./components/cart/Cart"));
 const Checkout = lazy(() => import("./components/checkout/Checkout"));
-
 
 function App() {
   const location = useLocation();
@@ -26,8 +26,8 @@ function App() {
 
   return (
     <div>
-      <Navbar />
-      <Suspense fallback={<h3>Page is loading...</h3>}>
+      <Suspense fallback={<Cooking />}>
+        <Navbar />
         <Routes>
           <Route path="/Login" element={<Login />} />
           <Route path="/Signup" element={<Signup />} />
@@ -43,9 +43,9 @@ function App() {
             <Route path="/checkout" element={<Checkout />} />
           </Route>
         </Routes>
-      </Suspense>
 
-      <Footer />
+        <Footer />
+      </Suspense>
     </div>
   );
 }
